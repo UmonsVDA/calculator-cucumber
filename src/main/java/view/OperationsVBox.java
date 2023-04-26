@@ -12,7 +12,7 @@ import java.util.Arrays;
 /**
  * This class is used to create the part of the calculator containing the basics operations (+, -, *, /, %, =) and some other useful buttons (rational number and . for real numbers). Singleton Design Pattern.
  */
-public class OperationsVBox extends CalculatorPart {
+public class OperationsVBox extends CalculatorPart { 
 
     private static OperationsVBox instance;
 
