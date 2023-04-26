@@ -1,10 +1,8 @@
 package calculator;
 
-import calculator.*;
+import calculator.operations.GreatestCommonDivisor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import calculator.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +23,7 @@ class GreatestCommonDivisorTest {
     void setUp() {
         params = Arrays.asList(new MyInteger(value1),new MyInteger(value2));
         try { op = new GreatestCommonDivisor(params); }
-        catch(IllegalConstruction e) { fail(); }
+        catch(IllegalOperationException e) { fail(); }
     }
 
     @Test
@@ -36,7 +34,7 @@ class GreatestCommonDivisorTest {
             GreatestCommonDivisor e = new GreatestCommonDivisor(p, Notation.INFIX);
             assertEquals(op, e);
         }
-        catch(IllegalConstruction e) { fail(); }
+        catch(IllegalOperationException e) { fail(); }
     }
 
 

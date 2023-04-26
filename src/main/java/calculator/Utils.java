@@ -10,12 +10,12 @@ public class Utils {
      * @param b The second integer
      * @return The greatest common divisor of the two integers
      */
-    static Long gcd(Long a, Long b) {
+    public static Long gcd(Long a, Long b) {
         return b == 0 ? a : gcd(b, a % b);
 
     }
 
-    static long pow(long base, int exponent) {
+    public static long pow(long base, int exponent) {
         long result = 1;
         for (int i = 0; i < exponent; i++) {
             result *= base;

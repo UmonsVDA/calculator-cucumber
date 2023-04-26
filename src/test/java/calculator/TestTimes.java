@@ -2,6 +2,9 @@ package calculator;
 
 //Import Junit5 libraries for unit testing:
 import static org.junit.jupiter.api.Assertions.*;
+
+import calculator.operations.Plus;
+import calculator.operations.Times;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
@@ -19,13 +22,13 @@ class TestTimes {
 	void setUp() {
 		  params = Arrays.asList(new MyInteger(value1),new MyInteger(value2));
 		  try { op = new Times(params); }
-		  catch(IllegalConstruction e) { fail(); }
+		  catch(IllegalOperationException e) { fail(); }
 	}
 
 	@Test
 	void testConstructor1() {
 		// It should not be possible to create an expression without null parameter list
-		assertThrows(IllegalConstruction.class, () -> op = new Times(null));
+		assertThrows(IllegalOperationException.class, () -> op = new Times(null));
 	}
 
 	@Test
@@ -33,7 +36,7 @@ class TestTimes {
 		// A Plus expression should not be the same as a Times expression
 		try {
 			assertNotSame(op, new Plus(new ArrayList<>()));
-		} catch (IllegalConstruction e) {
+		} catch (IllegalOperationException e) {
 			fail();
 		}
 	}
@@ -46,7 +49,7 @@ class TestTimes {
 			Times e = new Times(p, Notation.INFIX);
 			assertEquals(op, e);
 		}
-		catch(IllegalConstruction e) { fail(); }
+		catch(IllegalOperationException e) { fail(); }
 	}
 
 	@Test
@@ -62,13 +65,13 @@ class TestTimes {
 			Times e = new Times(p, Notation.INFIX);
 			assertEquals(e.hashCode(), op.hashCode());
 		}
-		catch(IllegalConstruction e) { fail(); }
+		catch(IllegalOperationException e) { fail(); }
 	}
 
 	@Test
 	void testNullParamList() {
 		params = null;
-		assertThrows(IllegalConstruction.class, () -> op = new Times(params));
+		assertThrows(IllegalOperationException.class, () -> op = new Times(params));
 	}
 
 }

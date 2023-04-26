@@ -1,9 +1,10 @@
 package visitor;
 
 import calculator.Expression;
+import calculator.IllegalOperationException;
 import calculator.MyNumber;
 import calculator.MyRationalNumber;
-import calculator.Operation;
+import calculator.operations.Operation;
 
 import java.util.ArrayList;
 
@@ -41,18 +42,17 @@ public class RationalNumberEvaluator extends Visitor {
      *
      * @param o The operation being visited
      */
-    public void visit(Operation o) {
+    public void visit(Operation o) throws IllegalOperationException {
         ArrayList<MyRationalNumber> evaluatedArgs = new ArrayList<>();
         //first loop to recursively evaluate each subexpression
-        for (Expression a : o.args) {
+        for (Expression a : o.getArgs()) {
             a.accept(this);
             evaluatedArgs.add(computedValue);
         }
         //second loop to accumulate all the evaluated subresults
         MyRationalNumber temp = evaluatedArgs.get(0);
-        int max = evaluatedArgs.size();
-        for (int counter = 1; counter < max; counter++) {
-            temp = o.op(temp, evaluatedArgs.get(counter));
+        for (int i = 1; i < evaluatedArgs.size(); i++) {
+            temp = o.op(temp, evaluatedArgs.get(i));
         }
         // store the accumulated result
         computedValue = temp;

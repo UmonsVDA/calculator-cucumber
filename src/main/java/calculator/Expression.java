@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.operations.Operation;
 import visitor.Visitor;
 
 /**
@@ -16,7 +17,7 @@ public interface Expression {
      *
      * @param v The visitor object being passed as a parameter
      */
-    void accept(Visitor v);
+    void accept(Visitor v) throws IllegalOperationException;
 
     /**
      * Counts the depth of nested expressions in an arithmetic expression

@@ -1,5 +1,6 @@
-package calculator;
+package calculator.operations;
 
+import calculator.*;
 import visitor.Visitor;
 
 import java.math.BigDecimal;
@@ -19,12 +20,13 @@ public abstract class Operation implements Expression {
     /**
      * The list of expressions passed as an argument to the arithmetic operation
      */
-    public List<Expression> args;
+    protected final List<Expression> args;
+
     /**
      * The notation used to render operations as strings.
      * By default, the infix notation will be used.
      */
-    public Notation notation = Notation.INFIX;
+    private Notation notation;
     /**
      * The character used to represent the arithmetic operation (e.g. "+", "*")
      */
@@ -44,10 +46,9 @@ public abstract class Operation implements Expression {
      * Note that it is allowed to have an EMPTY list of arguments.
      *
      * @param elist The list of expressions passed as argument to the arithmetic operation
-     * @throws IllegalConstruction Exception thrown if a null list of expressions is passed as argument
+     * @throws IllegalOperationException Exception thrown if a null list of expressions is passed as argument
      */
-    protected /*constructor*/ Operation(List<Expression> elist)
-            throws IllegalConstruction {
+    protected /*constructor*/ Operation(List<Expression> elist) throws IllegalOperationException {
         this(elist, null);
     }
 
@@ -57,16 +58,15 @@ public abstract class Operation implements Expression {
      *
      * @param elist The list of expressions passed as argument to the arithmetic operation
      * @param n     The notation to be used to represent the operation
-     * @throws IllegalConstruction Exception thrown if a null list of expressions is passed as argument
+     * @throws IllegalOperationException Exception thrown if a null list of expressions is passed as argument
      */
-    protected /*constructor*/ Operation(List<Expression> elist, Notation n)
-            throws IllegalConstruction {
+    protected /*constructor*/ Operation(List<Expression> elist, Notation n) throws IllegalOperationException {
         if (elist == null) {
-            throw new IllegalConstruction();
+            throw new IllegalOperationException();
         } else {
             args = new ArrayList<>(elist);
         }
-        if (n != null) notation = n;
+        notation = n == null ? Notation.INFIX : n;
     }
 
     /**
@@ -85,7 +85,7 @@ public abstract class Operation implements Expression {
      * @param r second argument of the binary operation
      * @return result of computing the binary operation
      */
-    public abstract int op(int l, int r);
+    public abstract int op(int l, int r) throws IllegalOperationException;
     // the operation itself is specified in the subclasses
 
     /**
@@ -95,7 +95,7 @@ public abstract class Operation implements Expression {
      * @param r second argument of the binary operation
      * @return result of computing the binary operation
      */
-    public abstract BigDecimal op(BigDecimal l, BigDecimal r);
+    public abstract BigDecimal op(BigDecimal l, BigDecimal r) throws IllegalOperationException;
 
     /**
      * Abstract method representing the actual binary arithmetic operation to compute between two rational numbers
@@ -104,7 +104,7 @@ public abstract class Operation implements Expression {
      * @param r second rational number of the binary operation
      * @return result of computing the binary operation
      */
-    public abstract MyRationalNumber op(MyRationalNumber l, MyRationalNumber r);
+    public abstract MyRationalNumber op(MyRationalNumber l, MyRationalNumber r) throws IllegalOperationException;
 
 
     /**
@@ -116,6 +116,14 @@ public abstract class Operation implements Expression {
         args.addAll(params);
     }
 
+    public Notation getNotation() {
+        return notation;
+    }
+
+    public void setNotation(Notation notation) {
+        this.notation = notation;
+    }
+
     /**
      * Accept method to implement the visitor design pattern to traverse arithmetic expressions.
      * Each operation will delegate the visitor to each of its arguments expressions,
@@ -123,7 +131,10 @@ public abstract class Operation implements Expression {
      *
      * @param v The visitor object
      */
-    public void accept(Visitor v) {
+    public void accept(Visitor v) throws IllegalOperationException {
+        if (args.size() == 0) {
+            throw new IllegalOperationException();
+        }
         for (Expression a : args) {
             a.accept(v);
         }
@@ -138,10 +149,7 @@ public abstract class Operation implements Expression {
      */
     public final int countDepth() {
         // use of Java 8 functional programming capabilities
-        return 1 + args.stream()
-                .mapToInt(Expression::countDepth)
-                .max()
-                .getAsInt();
+        return 1 + args.stream().mapToInt(Expression::countDepth).max().getAsInt();
     }
 
     /**
@@ -152,18 +160,12 @@ public abstract class Operation implements Expression {
      */
     public final int countOps() {
         // use of Java 8 functional programming capabilities
-        return 1 + args.stream()
-                .mapToInt(Expression::countOps)
-                .reduce(Integer::sum)
-                .getAsInt();
+        return 1 + args.stream().mapToInt(Expression::countOps).reduce(Integer::sum).getAsInt();
     }
 
     public final int countNbs() {
         // use of Java 8 functional programming capabilities
-        return args.stream()
-                .mapToInt(Expression::countNbs)
-                .reduce(Integer::sum)
-                .getAsInt();
+        return args.stream().mapToInt(Expression::countNbs).reduce(Integer::sum).getAsInt();
     }
 
     /**
@@ -187,17 +189,9 @@ public abstract class Operation implements Expression {
     public final String toString(Notation n) {
         Stream<String> s = args.stream().map(Object::toString);
         return switch (n) {
-            case INFIX -> "( " +
-                    s.reduce((s1, s2) -> s1 + " " + symbol + " " + s2).get() +
-                    " )";
-            case PREFIX -> symbol + " " +
-                    "(" +
-                    s.reduce((s1, s2) -> s1 + ", " + s2).get() +
-                    ")";
-            case POSTFIX -> "(" +
-                    s.reduce((s1, s2) -> s1 + ", " + s2).get() +
-                    ")" +
-                    " " + symbol;
+            case INFIX -> "( " + s.reduce((s1, s2) -> s1 + " " + symbol + " " + s2).get() + " )";
+            case PREFIX -> symbol + " " + "(" + s.reduce((s1, s2) -> s1 + ", " + s2).get() + ")";
+            case POSTFIX -> "(" + s.reduce((s1, s2) -> s1 + ", " + s2).get() + ")" + " " + symbol;
         };
     }
 

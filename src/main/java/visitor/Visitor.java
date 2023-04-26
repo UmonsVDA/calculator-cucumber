@@ -1,7 +1,8 @@
 package visitor;
 
+import calculator.IllegalOperationException;
 import calculator.MyNumber;
-import calculator.Operation;
+import calculator.operations.Operation;
 
 /**
  * Visitor design pattern
@@ -20,5 +21,5 @@ public abstract class Visitor {
      *
      * @param o The operation being visited
      */
-    public abstract void visit(Operation o);
+    public abstract void visit(Operation o) throws IllegalOperationException;
 }

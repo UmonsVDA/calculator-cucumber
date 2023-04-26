@@ -2,6 +2,9 @@ package calculator;
 
 //Import Junit5 libraries for unit testing:
 import static org.junit.jupiter.api.Assertions.*;
+
+import calculator.operations.Minus;
+import calculator.operations.Times;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
@@ -19,13 +22,13 @@ class TestMinus {
 	void setUp() {
 		  params = Arrays.asList(new MyInteger(value1),new MyInteger(value2));
 		  try { op = new Minus(params); }
-		  catch(IllegalConstruction e) { fail(); }
+		  catch(IllegalOperationException e) { fail(); }
 	}
 
 	@Test
 	void testConstructor1() {
 		// It should not be possible to create an expression without null parameter list
-		assertThrows(IllegalConstruction.class, () -> op = new Minus(null));
+		assertThrows(IllegalOperationException.class, () -> op = new Minus(null));
 	}
 
 	@SuppressWarnings("AssertBetweenInconvertibleTypes")
@@ -34,7 +37,7 @@ class TestMinus {
 		// A Times expression should not be the same as a Minus expression
 		try {
 			assertNotSame(op, new Times(new ArrayList<>()));
-		} catch (IllegalConstruction e) {
+		} catch (IllegalOperationException e) {
 			fail();
 		}
 	}
@@ -47,7 +50,7 @@ class TestMinus {
 			Minus e = new Minus(p, Notation.INFIX);
 			assertEquals(op, e);
 		}
-		catch(IllegalConstruction e) { fail(); }
+		catch(IllegalOperationException e) { fail(); }
 	}
 
 	@SuppressWarnings("ConstantConditions")
@@ -64,13 +67,13 @@ class TestMinus {
 			Minus e = new Minus(p, Notation.INFIX);
 			assertEquals(e.hashCode(), op.hashCode());
 		}
-		catch(IllegalConstruction e) { fail(); }
+		catch(IllegalOperationException e) { fail(); }
 	}
 
 	@Test
 	void testNullParamList() {
 		params = null;
-		assertThrows(IllegalConstruction.class, () -> op = new Minus(params));
+		assertThrows(IllegalOperationException.class, () -> op = new Minus(params));
 	}
 
 }

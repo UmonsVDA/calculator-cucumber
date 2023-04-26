@@ -200,6 +200,10 @@ public class MyRationalNumber extends MyNumber {
         return new MyRationalNumber(sign * absNominator / gcd, absDenominator / gcd);
     }
 
+    public boolean isZero(){
+        return nominator == 0;
+    }
+
 }
 
 

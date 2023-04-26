@@ -8,6 +8,7 @@ import visitor.RealNumberEvaluator;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.Optional;
 
 /**
  * This class represents the core logic of a Calculator.
@@ -74,13 +75,19 @@ public class Calculator {
      * @param e the arithmetic Expression to be evaluated
      * @return The result of the evaluation
      */
-    public int eval(Expression e) {
-        // create a new visitor to evaluate expressions
-        Evaluator v = new Evaluator();
-        // and ask the expression to accept this visitor to start the evaluation process
-        e.accept(v);
-        // and return the result of the evaluation at the end of the process
-        return v.getResult();
+    public Optional<Integer> eval(Expression e) {
+        if(e == null) return Optional.empty();
+        try {
+            // create a new visitor to evaluate expressions
+            Evaluator v = new Evaluator();
+            // and ask the expression to accept this visitor to start the evaluation process
+            e.accept(v);
+            // and return the result of the evaluation at the end of the process
+            return Optional.of(v.getResult());
+        } catch (IllegalOperationException illegalConstructionException){
+            return Optional.empty();
+        }
+
     }
 
     /**
@@ -89,13 +96,15 @@ public class Calculator {
      * @param e the arithmetic Expression to be evaluated
      * @return The result of the evaluation
      */
-    public BigDecimal evalReal(Expression e) {
-        // create a new visitor to evaluate expressions
-        RealNumberEvaluator v = new RealNumberEvaluator();
-        // and ask the expression to accept this visitor to start the evaluation process
-        e.accept(v);
-        // and return the result of the evaluation at the end of the process
-        return v.getResult();
+    public Optional<BigDecimal> evalReal(Expression e) {
+        if(e == null) return Optional.empty();
+        try {
+            RealNumberEvaluator v = new RealNumberEvaluator();
+            e.accept(v);
+            return Optional.of(v.getResult());
+        } catch (IllegalOperationException illegalConstructionException){
+            return Optional.empty();
+        }
     }
 
     /**
@@ -104,10 +113,15 @@ public class Calculator {
      * @param e the arithmetic Expression to be evaluated
      * @return The result of the evaluation as a rational number
      */
-    public MyRationalNumber evalRational(Expression e) {
-        RationalNumberEvaluator v = new RationalNumberEvaluator();
-        e.accept(v);
-        return v.getResult();
+    public Optional<MyRationalNumber> evalRational(Expression e) {
+        if(e == null) return Optional.empty();
+        try {
+            RationalNumberEvaluator v = new RationalNumberEvaluator();
+            e.accept(v);
+            return Optional.of(v.getResult());
+        } catch (IllegalOperationException illegalConstructionException){
+            return Optional.empty();
+        }
     }
 
     /**

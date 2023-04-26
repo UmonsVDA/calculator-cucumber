@@ -1,4 +1,9 @@
-package calculator;
+package calculator.operations;
+
+import calculator.Expression;
+import calculator.IllegalOperationException;
+import calculator.MyRationalNumber;
+import calculator.Notation;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -18,10 +23,10 @@ public final class Times extends Operation {
      * Class constructor specifying a number of Expressions to multiply.
      *
      * @param elist The list of Expressions to multiply
-     * @throws IllegalConstruction If an empty list of expressions if passed as parameter
-     * @see #Times(List<Expression>,Notation)
+     * @throws IllegalOperationException If an empty list of expressions if passed as parameter
+     * @see #Times(List< Expression >, Notation )
      */
-    public /*constructor*/ Times(List<Expression> elist) throws IllegalConstruction {
+    public /*constructor*/ Times(List<Expression> elist) throws IllegalOperationException {
         this(elist, null);
     }
 
@@ -31,11 +36,11 @@ public final class Times extends Operation {
      *
      * @param elist The list of Expressions to multiply
      * @param n     The Notation to be used to represent the operation
-     * @throws IllegalConstruction If an empty list of expressions if passed as parameter
+     * @throws IllegalOperationException If an empty list of expressions if passed as parameter
      * @see #Times(List<Expression>)
      * @see Operation#Operation(List<Expression>,Notation)
      */
-    public Times(List<Expression> elist, Notation n) throws IllegalConstruction {
+    public Times(List<Expression> elist, Notation n) throws IllegalOperationException {
         super(elist, n);
         symbol = "*";
         neutral = 1;

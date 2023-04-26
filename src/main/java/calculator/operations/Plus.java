@@ -1,4 +1,9 @@
-package calculator;
+package calculator.operations;
+
+import calculator.Expression;
+import calculator.IllegalOperationException;
+import calculator.MyRationalNumber;
+import calculator.Notation;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -19,10 +24,10 @@ public final class Plus extends Operation {
      * Class constructor specifying a number of Expressions to add.
      *
      * @param elist The list of Expressions to add
-     * @throws IllegalConstruction If an empty list of expressions if passed as parameter
-     * @see #Plus(List<Expression>,Notation)
+     * @throws IllegalOperationException If an empty list of expressions if passed as parameter
+     * @see #Plus(List< Expression >, Notation )
      */
-    public /*constructor*/ Plus(List<Expression> elist) throws IllegalConstruction {
+    public /*constructor*/ Plus(List<Expression> elist) throws IllegalOperationException {
         this(elist, null);
     }
 
@@ -32,11 +37,11 @@ public final class Plus extends Operation {
      *
      * @param elist The list of Expressions to add
      * @param n     The Notation to be used to represent the operation
-     * @throws IllegalConstruction If an empty list of expressions if passed as parameter
+     * @throws IllegalOperationException If an empty list of expressions if passed as parameter
      * @see #Plus(List<Expression>)
      * @see Operation#Operation(List<Expression>,Notation)
      */
-    public Plus(List<Expression> elist, Notation n) throws IllegalConstruction {
+    public Plus(List<Expression> elist, Notation n) throws IllegalOperationException {
         super(elist, n);
         symbol = "+";
         neutral = 0;

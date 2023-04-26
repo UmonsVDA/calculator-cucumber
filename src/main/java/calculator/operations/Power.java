@@ -1,21 +1,23 @@
-package calculator;
+package calculator.operations;
+
+import calculator.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class Modulo extends Operation {
-    public Modulo(List<Expression> elist) throws IllegalConstruction {
+public class Power extends BinaryOperation {
+    public Power(List<Expression> elist) throws IllegalOperationException {
         super(elist);
     }
 
-    public Modulo(List<Expression> elist, Notation n) throws IllegalConstruction {
+    public Power(List<Expression> elist, Notation n) throws IllegalOperationException {
         super(elist, n);
-        symbol = "%";
+        symbol = "^";
     }
 
     @Override
     public int op(int l, int r) {
-        return l % r;
+        return (int) Utils.pow(l, r);
     }
 
     @Override

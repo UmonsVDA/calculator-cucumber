@@ -1,8 +1,9 @@
 package visitor;
 
 import calculator.Expression;
+import calculator.IllegalOperationException;
 import calculator.MyNumber;
-import calculator.Operation;
+import calculator.operations.Operation;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -45,18 +46,17 @@ public class RealNumberEvaluator extends Visitor {
      * @param o The operation being visited
      */
     @Override
-    public void visit(Operation o) {
+    public void visit(Operation o) throws IllegalOperationException {
         ArrayList<BigDecimal> evaluatedArgs = new ArrayList<>();
         //first loop to recursively evaluate each subexpression
-        for (Expression a : o.args) {
+        for (Expression a : o.getArgs()) {
             a.accept(this);
             evaluatedArgs.add(computedValue);
         }
         //second loop to accumulate all the evaluated subresults
         BigDecimal temp = evaluatedArgs.get(0);
-        int max = evaluatedArgs.size();
-        for (int counter = 1; counter < max; counter++) {
-            temp = o.op(temp, evaluatedArgs.get(counter));
+        for (int i = 1; i < evaluatedArgs.size(); i++) {
+            temp = o.op(temp, evaluatedArgs.get(i));
         }
         // store the accumulated result
         computedValue = temp;

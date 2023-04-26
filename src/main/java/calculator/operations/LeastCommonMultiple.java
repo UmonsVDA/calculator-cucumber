@@ -1,21 +1,23 @@
-package calculator;
+package calculator.operations;
+
+import calculator.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class Power extends Operation {
-    public Power(List<Expression> elist) throws IllegalConstruction {
+public class LeastCommonMultiple extends BinaryOperation {
+    public LeastCommonMultiple(List<Expression> elist) throws IllegalOperationException {
         super(elist);
     }
 
-    public Power(List<Expression> elist, Notation n) throws IllegalConstruction {
+    public LeastCommonMultiple(List<Expression> elist, Notation n) throws IllegalOperationException {
         super(elist, n);
-        symbol = "^";
+        symbol = "LCM";
     }
 
     @Override
     public int op(int l, int r) {
-        return (int) Utils.pow(l, r);
+        return (int) ((l * r) / Utils.gcd((long) l, (long) r));
     }
 
     @Override

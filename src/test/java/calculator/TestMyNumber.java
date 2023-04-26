@@ -2,6 +2,8 @@ package calculator;
 
 //Import Junit5 libraries for unit testing:
 import static org.junit.jupiter.api.Assertions.*;
+
+import calculator.operations.Times;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ class TestMyNumber {
 		try {
 			assertNotEquals(new Times(new ArrayList<>()), number);
 		}
-		catch (IllegalConstruction e) {fail();}
+		catch (IllegalOperationException e) {fail();}
 	}
 
 	@Test

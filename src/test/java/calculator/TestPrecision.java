@@ -1,13 +1,18 @@
 package calculator;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.*;
+import calculator.operations.Divides;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class TestPrecision {
 
     private final String value1 = "3.14159";
@@ -22,20 +27,22 @@ public class TestPrecision {
     private Calculator calculator;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         calculator = new Calculator();
-        params = new ArrayList<>(Arrays.asList(new MyRealNumber(value1),new MyRealNumber(value2)));
+        params = new ArrayList<>(Arrays.asList(new MyRealNumber(value1), new MyRealNumber(value2)));
         try {
             op = new Divides(params);
             op.setMathContext(mathContext);
+        } catch (IllegalOperationException e) {
+            fail();
         }
-        catch(IllegalConstruction e) { fail(); }
     }
 
     @Test
-    void testPrecisionOperation(){
-        BigDecimal result = calculator.evalReal(op);
-        assertEquals(precision,result.precision());
+    void testPrecisionOperation() {
+        Optional<BigDecimal> result = calculator.evalReal(op);
+        assertTrue(result.isPresent());
+        assertEquals(precision, result.get().precision());
     }
 
 }

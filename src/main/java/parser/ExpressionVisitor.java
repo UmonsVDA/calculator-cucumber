@@ -1,6 +1,7 @@
 package parser;
 
 import calculator.*;
+import calculator.operations.*;
 
 import java.math.MathContext;
 import java.util.ArrayList;
@@ -85,7 +86,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             Plus op = new Plus(temp.get(temp.size()-1),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalOperationException exception){
             return  null;
         }
     }
@@ -96,7 +97,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             Minus op = new Minus(temp.get(temp.size()-1),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalOperationException exception){
             return  null;
         }
     }
@@ -107,7 +108,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             Times op = new Times(temp.get(temp.size()-1),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalOperationException exception){
             return  null;
         }
     }
@@ -118,7 +119,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             Divides op = new Divides(temp.get(temp.size()-1),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalOperationException exception){
             return  null;
         }
     }
@@ -129,7 +130,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             Modulo op = new Modulo(temp.get(temp.size()-1),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalOperationException exception){
             return  null;
         }
     }
@@ -140,7 +141,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             Power op = new Power(temp.get(temp.size()-1),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalOperationException exception){
             return  null;
         }
     }
@@ -151,7 +152,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             GreatestCommonDivisor op = new GreatestCommonDivisor(temp.get(temp.size()-1),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalOperationException exception){
             return  null;
         }
     }
@@ -162,7 +163,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             LeastCommonMultiple op = new LeastCommonMultiple(temp.get(temp.size()-1),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalOperationException exception){
             return  null;
         }
     }
