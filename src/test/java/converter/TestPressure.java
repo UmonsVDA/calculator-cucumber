@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestPressure { 
+public class TestPressure {
     @Test
     public void testToPascals() {
         Pressure pressure = new Pressure("atm");
