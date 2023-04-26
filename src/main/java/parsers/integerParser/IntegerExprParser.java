@@ -1,5 +1,5 @@
-// Generated from parser/Expr.g4 by ANTLR 4.12.0
-package parser;
+// Generated from parsers/integerParser/IntegerExpr.g4 by ANTLR 4.12.0
+package parsers.integerParser;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
-public class ExprParser extends Parser {
+public class IntegerExprParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.12.0", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -18,7 +18,7 @@ public class ExprParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		T__9=10, SEPARATOR=11, INT=12, REAL=13, FRAC=14;
+		T__9=10, SEPARATOR=11, INT=12;
 	public static final int
 		RULE_input = 0, RULE_expr = 1, RULE_prefixOperation = 2, RULE_postfixOperation = 3, 
 		RULE_values = 4, RULE_operator = 5, RULE_infixOperation = 6, RULE_e = 7, 
@@ -34,14 +34,14 @@ public class ExprParser extends Parser {
 	private static String[] makeLiteralNames() {
 		return new String[] {
 			null, "'('", "')'", "'+'", "'-'", "'*'", "'/'", "'%'", "'^'", "'gcd'", 
-			"'lcm'", "','"
+			"'lcm'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, "SEPARATOR", 
-			"INT", "REAL", "FRAC"
+			"INT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -79,7 +79,7 @@ public class ExprParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Expr.g4"; }
+	public String getGrammarFileName() { return "IntegerExpr.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -90,7 +90,7 @@ public class ExprParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public ExprParser(TokenStream input) {
+	public IntegerExprParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
@@ -100,22 +100,22 @@ public class ExprParser extends Parser {
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
-		public TerminalNode EOF() { return getToken(ExprParser.EOF, 0); }
+		public TerminalNode EOF() { return getToken(IntegerExprParser.EOF, 0); }
 		public InputContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_input; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterInput(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterInput(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitInput(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitInput(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitInput(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitInput(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -163,15 +163,15 @@ public class ExprParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_expr; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterExpr(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitExpr(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitExpr(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -232,21 +232,25 @@ public class ExprParser extends Parser {
 		public ValuesContext values() {
 			return getRuleContext(ValuesContext.class,0);
 		}
+		public PrefixOperationContext prefixOperation() {
+			return getRuleContext(PrefixOperationContext.class,0);
+		}
+		public TerminalNode SEPARATOR() { return getToken(IntegerExprParser.SEPARATOR, 0); }
 		public PrefixOperationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_prefixOperation; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterPrefixOperation(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterPrefixOperation(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitPrefixOperation(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitPrefixOperation(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitPrefixOperation(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitPrefixOperation(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -254,13 +258,42 @@ public class ExprParser extends Parser {
 	public final PrefixOperationContext prefixOperation() throws RecognitionException {
 		PrefixOperationContext _localctx = new PrefixOperationContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_prefixOperation);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(35);
 			operator();
-			setState(36);
-			values(0);
+			setState(37);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==SEPARATOR) {
+				{
+				setState(36);
+				match(SEPARATOR);
+				}
+			}
+
+			setState(44);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+			case 1:
+				{
+				setState(39);
+				values(0);
+				}
+				break;
+			case 2:
+				{
+				setState(40);
+				match(T__0);
+				setState(41);
+				prefixOperation();
+				setState(42);
+				match(T__1);
+				}
+				break;
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -276,27 +309,31 @@ public class ExprParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PostfixOperationContext extends ParserRuleContext {
-		public ValuesContext values() {
-			return getRuleContext(ValuesContext.class,0);
-		}
 		public OperatorContext operator() {
 			return getRuleContext(OperatorContext.class,0);
 		}
+		public PostfixOperationContext postfixOperation() {
+			return getRuleContext(PostfixOperationContext.class,0);
+		}
+		public ValuesContext values() {
+			return getRuleContext(ValuesContext.class,0);
+		}
+		public TerminalNode SEPARATOR() { return getToken(IntegerExprParser.SEPARATOR, 0); }
 		public PostfixOperationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_postfixOperation; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterPostfixOperation(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterPostfixOperation(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitPostfixOperation(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitPostfixOperation(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitPostfixOperation(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitPostfixOperation(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -304,12 +341,41 @@ public class ExprParser extends Parser {
 	public final PostfixOperationContext postfixOperation() throws RecognitionException {
 		PostfixOperationContext _localctx = new PostfixOperationContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_postfixOperation);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(38);
-			values(0);
-			setState(39);
+			setState(51);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+			case 1:
+				{
+				setState(46);
+				match(T__0);
+				setState(47);
+				postfixOperation();
+				setState(48);
+				match(T__1);
+				}
+				break;
+			case 2:
+				{
+				setState(50);
+				values(0);
+				}
+				break;
+			}
+			setState(54);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==SEPARATOR) {
+				{
+				setState(53);
+				match(SEPARATOR);
+				}
+			}
+
+			setState(56);
 			operator();
 			}
 		}
@@ -335,25 +401,22 @@ public class ExprParser extends Parser {
 		public ValuesContext values(int i) {
 			return getRuleContext(ValuesContext.class,i);
 		}
-		public ExprContext expr() {
-			return getRuleContext(ExprContext.class,0);
-		}
-		public TerminalNode SEPARATOR() { return getToken(ExprParser.SEPARATOR, 0); }
+		public TerminalNode SEPARATOR() { return getToken(IntegerExprParser.SEPARATOR, 0); }
 		public ValuesContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_values; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterValues(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterValues(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitValues(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitValues(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitValues(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitValues(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -373,40 +436,32 @@ public class ExprParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(51);
+			setState(64);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
-			case 1:
+			switch (_input.LA(1)) {
+			case INT:
 				{
-				setState(42);
+				setState(59);
 				num();
 				}
 				break;
-			case 2:
+			case T__0:
 				{
-				setState(43);
+				setState(60);
 				match(T__0);
-				setState(44);
+				setState(61);
 				values(0);
-				setState(45);
+				setState(62);
 				match(T__1);
 				}
 				break;
-			case 3:
-				{
-				setState(47);
-				match(T__0);
-				setState(48);
-				expr();
-				setState(49);
-				match(T__1);
-				}
-				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(58);
+			setState(71);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
@@ -415,18 +470,18 @@ public class ExprParser extends Parser {
 					{
 					_localctx = new ValuesContext(_parentctx, _parentState);
 					pushNewRecursionContext(_localctx, _startState, RULE_values);
-					setState(53);
+					setState(66);
 					if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
-					setState(54);
+					setState(67);
 					match(SEPARATOR);
-					setState(55);
+					setState(68);
 					values(2);
 					}
 					} 
 				}
-				setState(60);
+				setState(73);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			}
 			}
 		}
@@ -458,15 +513,15 @@ public class ExprParser extends Parser {
 		public ModuloContext(OperatorContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterModulo(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterModulo(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitModulo(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitModulo(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitModulo(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitModulo(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -475,15 +530,15 @@ public class ExprParser extends Parser {
 		public TimesContext(OperatorContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterTimes(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterTimes(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitTimes(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitTimes(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitTimes(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitTimes(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -492,15 +547,15 @@ public class ExprParser extends Parser {
 		public LCMContext(OperatorContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterLCM(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterLCM(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitLCM(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitLCM(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitLCM(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitLCM(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -509,15 +564,15 @@ public class ExprParser extends Parser {
 		public GCDContext(OperatorContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterGCD(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterGCD(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitGCD(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitGCD(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitGCD(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitGCD(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -526,15 +581,15 @@ public class ExprParser extends Parser {
 		public PlusContext(OperatorContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterPlus(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterPlus(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitPlus(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitPlus(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitPlus(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitPlus(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -543,15 +598,15 @@ public class ExprParser extends Parser {
 		public MinusContext(OperatorContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterMinus(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterMinus(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitMinus(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitMinus(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitMinus(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitMinus(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -560,15 +615,15 @@ public class ExprParser extends Parser {
 		public DividesContext(OperatorContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterDivides(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterDivides(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitDivides(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitDivides(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitDivides(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitDivides(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -577,15 +632,15 @@ public class ExprParser extends Parser {
 		public PowerContext(OperatorContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterPower(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterPower(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitPower(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitPower(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitPower(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitPower(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -594,7 +649,7 @@ public class ExprParser extends Parser {
 		OperatorContext _localctx = new OperatorContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_operator);
 		try {
-			setState(69);
+			setState(82);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__2:
@@ -602,7 +657,7 @@ public class ExprParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				{
-				setState(61);
+				setState(74);
 				match(T__2);
 				}
 				}
@@ -612,7 +667,7 @@ public class ExprParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				{
-				setState(62);
+				setState(75);
 				match(T__3);
 				}
 				}
@@ -622,7 +677,7 @@ public class ExprParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				{
-				setState(63);
+				setState(76);
 				match(T__4);
 				}
 				}
@@ -632,7 +687,7 @@ public class ExprParser extends Parser {
 				enterOuterAlt(_localctx, 4);
 				{
 				{
-				setState(64);
+				setState(77);
 				match(T__5);
 				}
 				}
@@ -642,7 +697,7 @@ public class ExprParser extends Parser {
 				enterOuterAlt(_localctx, 5);
 				{
 				{
-				setState(65);
+				setState(78);
 				match(T__6);
 				}
 				}
@@ -652,7 +707,7 @@ public class ExprParser extends Parser {
 				enterOuterAlt(_localctx, 6);
 				{
 				{
-				setState(66);
+				setState(79);
 				match(T__7);
 				}
 				}
@@ -662,7 +717,7 @@ public class ExprParser extends Parser {
 				enterOuterAlt(_localctx, 7);
 				{
 				{
-				setState(67);
+				setState(80);
 				match(T__8);
 				}
 				}
@@ -672,7 +727,7 @@ public class ExprParser extends Parser {
 				enterOuterAlt(_localctx, 8);
 				{
 				{
-				setState(68);
+				setState(81);
 				match(T__9);
 				}
 				}
@@ -703,15 +758,15 @@ public class ExprParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_infixOperation; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterInfixOperation(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterInfixOperation(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitInfixOperation(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitInfixOperation(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitInfixOperation(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitInfixOperation(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -722,7 +777,7 @@ public class ExprParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(71);
+			setState(84);
 			e();
 			}
 		}
@@ -760,15 +815,15 @@ public class ExprParser extends Parser {
 		public StartValueInfixContext(EContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterStartValueInfix(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterStartValueInfix(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitStartValueInfix(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitStartValueInfix(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitStartValueInfix(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitStartValueInfix(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -780,9 +835,9 @@ public class ExprParser extends Parser {
 			_localctx = new StartValueInfixContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(73);
+			setState(86);
 			t();
-			setState(74);
+			setState(87);
 			e2();
 			}
 		}
@@ -820,15 +875,15 @@ public class ExprParser extends Parser {
 		public InfixMinusContext(E2Context ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterInfixMinus(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterInfixMinus(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitInfixMinus(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitInfixMinus(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitInfixMinus(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitInfixMinus(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -843,15 +898,15 @@ public class ExprParser extends Parser {
 		public InfixPlusContext(E2Context ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterInfixPlus(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterInfixPlus(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitInfixPlus(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitInfixPlus(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitInfixPlus(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitInfixPlus(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -860,15 +915,15 @@ public class ExprParser extends Parser {
 		public VoidContext(E2Context ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterVoid(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterVoid(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitVoid(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitVoid(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitVoid(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitVoid(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -877,18 +932,18 @@ public class ExprParser extends Parser {
 		E2Context _localctx = new E2Context(_ctx, getState());
 		enterRule(_localctx, 16, RULE_e2);
 		try {
-			setState(85);
+			setState(98);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__2:
 				_localctx = new InfixPlusContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(76);
+				setState(89);
 				match(T__2);
-				setState(77);
+				setState(90);
 				t();
-				setState(78);
+				setState(91);
 				e2();
 				}
 				break;
@@ -896,11 +951,11 @@ public class ExprParser extends Parser {
 				_localctx = new InfixMinusContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(80);
+				setState(93);
 				match(T__3);
-				setState(81);
+				setState(94);
 				t();
-				setState(82);
+				setState(95);
 				e2();
 				}
 				break;
@@ -949,15 +1004,15 @@ public class ExprParser extends Parser {
 		public SecondValueInfixContext(TContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterSecondValueInfix(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterSecondValueInfix(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitSecondValueInfix(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitSecondValueInfix(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitSecondValueInfix(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitSecondValueInfix(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -969,9 +1024,9 @@ public class ExprParser extends Parser {
 			_localctx = new SecondValueInfixContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(87);
+			setState(100);
 			f();
-			setState(88);
+			setState(101);
 			t2();
 			}
 		}
@@ -1003,15 +1058,15 @@ public class ExprParser extends Parser {
 		public Void2Context(T2Context ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterVoid2(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterVoid2(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitVoid2(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitVoid2(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitVoid2(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitVoid2(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1026,15 +1081,15 @@ public class ExprParser extends Parser {
 		public InfixTimesContext(T2Context ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterInfixTimes(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterInfixTimes(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitInfixTimes(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitInfixTimes(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitInfixTimes(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitInfixTimes(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1049,15 +1104,15 @@ public class ExprParser extends Parser {
 		public InfixDividesContext(T2Context ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterInfixDivides(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterInfixDivides(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitInfixDivides(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitInfixDivides(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitInfixDivides(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitInfixDivides(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1066,18 +1121,18 @@ public class ExprParser extends Parser {
 		T2Context _localctx = new T2Context(_ctx, getState());
 		enterRule(_localctx, 20, RULE_t2);
 		try {
-			setState(99);
+			setState(112);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__4:
 				_localctx = new InfixTimesContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(90);
+				setState(103);
 				match(T__4);
-				setState(91);
+				setState(104);
 				f();
-				setState(92);
+				setState(105);
 				t2();
 				}
 				break;
@@ -1085,11 +1140,11 @@ public class ExprParser extends Parser {
 				_localctx = new InfixDividesContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(94);
+				setState(107);
 				match(T__5);
-				setState(95);
+				setState(108);
 				f();
-				setState(96);
+				setState(109);
 				t2();
 				}
 				break;
@@ -1131,15 +1186,15 @@ public class ExprParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_f; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterF(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterF(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitF(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitF(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitF(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitF(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1148,26 +1203,24 @@ public class ExprParser extends Parser {
 		FContext _localctx = new FContext(_ctx, getState());
 		enterRule(_localctx, 22, RULE_f);
 		try {
-			setState(106);
+			setState(119);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case INT:
-			case REAL:
-			case FRAC:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(101);
+				setState(114);
 				num();
 				}
 				break;
 			case T__0:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(102);
+				setState(115);
 				match(T__0);
-				setState(103);
+				setState(116);
 				expr();
-				setState(104);
+				setState(117);
 				match(T__1);
 				}
 				break;
@@ -1200,55 +1253,19 @@ public class ExprParser extends Parser {
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class IntegerContext extends NumContext {
-		public TerminalNode INT() { return getToken(ExprParser.INT, 0); }
+		public TerminalNode INT() { return getToken(IntegerExprParser.INT, 0); }
 		public IntegerContext(NumContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterInteger(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).enterInteger(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitInteger(this);
+			if ( listener instanceof IntegerExprListener ) ((IntegerExprListener)listener).exitInteger(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitInteger(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class RealContext extends NumContext {
-		public TerminalNode REAL() { return getToken(ExprParser.REAL, 0); }
-		public RealContext(NumContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterReal(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitReal(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitReal(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class FractionContext extends NumContext {
-		public TerminalNode FRAC() { return getToken(ExprParser.FRAC, 0); }
-		public FractionContext(NumContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterFraction(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitFraction(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitFraction(this);
+			if ( visitor instanceof IntegerExprVisitor ) return ((IntegerExprVisitor<? extends T>)visitor).visitInteger(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1257,35 +1274,11 @@ public class ExprParser extends Parser {
 		NumContext _localctx = new NumContext(_ctx, getState());
 		enterRule(_localctx, 24, RULE_num);
 		try {
-			setState(111);
-			_errHandler.sync(this);
-			switch (_input.LA(1)) {
-			case INT:
-				_localctx = new IntegerContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(108);
-				match(INT);
-				}
-				break;
-			case REAL:
-				_localctx = new RealContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(109);
-				match(REAL);
-				}
-				break;
-			case FRAC:
-				_localctx = new FractionContext(_localctx);
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(110);
-				match(FRAC);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+			_localctx = new IntegerContext(_localctx);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(121);
+			match(INT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1315,69 +1308,76 @@ public class ExprParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u000er\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001\f|\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
 		"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007\u0002"+
 		"\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0002\u000b\u0007\u000b\u0002"+
 		"\f\u0007\f\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001"+
 		"\u0001\u0001\u0001\u0001\u0003\u0001\"\b\u0001\u0001\u0002\u0001\u0002"+
-		"\u0001\u0002\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0004\u0001\u0004"+
-		"\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0004"+
-		"\u0001\u0004\u0001\u0004\u0003\u00044\b\u0004\u0001\u0004\u0001\u0004"+
-		"\u0001\u0004\u0005\u00049\b\u0004\n\u0004\f\u0004<\t\u0004\u0001\u0005"+
+		"\u0003\u0002&\b\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002"+
+		"\u0001\u0002\u0003\u0002-\b\u0002\u0001\u0003\u0001\u0003\u0001\u0003"+
+		"\u0001\u0003\u0001\u0003\u0003\u00034\b\u0003\u0001\u0003\u0003\u0003"+
+		"7\b\u0003\u0001\u0003\u0001\u0003\u0001\u0004\u0001\u0004\u0001\u0004"+
+		"\u0001\u0004\u0001\u0004\u0001\u0004\u0003\u0004A\b\u0004\u0001\u0004"+
+		"\u0001\u0004\u0001\u0004\u0005\u0004F\b\u0004\n\u0004\f\u0004I\t\u0004"+
 		"\u0001\u0005\u0001\u0005\u0001\u0005\u0001\u0005\u0001\u0005\u0001\u0005"+
-		"\u0001\u0005\u0003\u0005F\b\u0005\u0001\u0006\u0001\u0006\u0001\u0007"+
-		"\u0001\u0007\u0001\u0007\u0001\b\u0001\b\u0001\b\u0001\b\u0001\b\u0001"+
-		"\b\u0001\b\u0001\b\u0001\b\u0003\bV\b\b\u0001\t\u0001\t\u0001\t\u0001"+
-		"\n\u0001\n\u0001\n\u0001\n\u0001\n\u0001\n\u0001\n\u0001\n\u0001\n\u0003"+
-		"\nd\b\n\u0001\u000b\u0001\u000b\u0001\u000b\u0001\u000b\u0001\u000b\u0003"+
-		"\u000bk\b\u000b\u0001\f\u0001\f\u0001\f\u0003\fp\b\f\u0001\f\u0000\u0001"+
-		"\b\r\u0000\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018"+
-		"\u0000\u0000x\u0000\u001a\u0001\u0000\u0000\u0000\u0002!\u0001\u0000\u0000"+
-		"\u0000\u0004#\u0001\u0000\u0000\u0000\u0006&\u0001\u0000\u0000\u0000\b"+
-		"3\u0001\u0000\u0000\u0000\nE\u0001\u0000\u0000\u0000\fG\u0001\u0000\u0000"+
-		"\u0000\u000eI\u0001\u0000\u0000\u0000\u0010U\u0001\u0000\u0000\u0000\u0012"+
-		"W\u0001\u0000\u0000\u0000\u0014c\u0001\u0000\u0000\u0000\u0016j\u0001"+
-		"\u0000\u0000\u0000\u0018o\u0001\u0000\u0000\u0000\u001a\u001b\u0003\u0002"+
-		"\u0001\u0000\u001b\u001c\u0005\u0000\u0000\u0001\u001c\u0001\u0001\u0000"+
-		"\u0000\u0000\u001d\"\u0003\u0004\u0002\u0000\u001e\"\u0003\f\u0006\u0000"+
-		"\u001f\"\u0003\u0006\u0003\u0000 \"\u0003\u0018\f\u0000!\u001d\u0001\u0000"+
-		"\u0000\u0000!\u001e\u0001\u0000\u0000\u0000!\u001f\u0001\u0000\u0000\u0000"+
-		"! \u0001\u0000\u0000\u0000\"\u0003\u0001\u0000\u0000\u0000#$\u0003\n\u0005"+
-		"\u0000$%\u0003\b\u0004\u0000%\u0005\u0001\u0000\u0000\u0000&\'\u0003\b"+
-		"\u0004\u0000\'(\u0003\n\u0005\u0000(\u0007\u0001\u0000\u0000\u0000)*\u0006"+
-		"\u0004\uffff\uffff\u0000*4\u0003\u0018\f\u0000+,\u0005\u0001\u0000\u0000"+
-		",-\u0003\b\u0004\u0000-.\u0005\u0002\u0000\u0000.4\u0001\u0000\u0000\u0000"+
-		"/0\u0005\u0001\u0000\u000001\u0003\u0002\u0001\u000012\u0005\u0002\u0000"+
-		"\u000024\u0001\u0000\u0000\u00003)\u0001\u0000\u0000\u00003+\u0001\u0000"+
-		"\u0000\u00003/\u0001\u0000\u0000\u00004:\u0001\u0000\u0000\u000056\n\u0001"+
-		"\u0000\u000067\u0005\u000b\u0000\u000079\u0003\b\u0004\u000285\u0001\u0000"+
-		"\u0000\u00009<\u0001\u0000\u0000\u0000:8\u0001\u0000\u0000\u0000:;\u0001"+
-		"\u0000\u0000\u0000;\t\u0001\u0000\u0000\u0000<:\u0001\u0000\u0000\u0000"+
-		"=F\u0005\u0003\u0000\u0000>F\u0005\u0004\u0000\u0000?F\u0005\u0005\u0000"+
-		"\u0000@F\u0005\u0006\u0000\u0000AF\u0005\u0007\u0000\u0000BF\u0005\b\u0000"+
-		"\u0000CF\u0005\t\u0000\u0000DF\u0005\n\u0000\u0000E=\u0001\u0000\u0000"+
-		"\u0000E>\u0001\u0000\u0000\u0000E?\u0001\u0000\u0000\u0000E@\u0001\u0000"+
-		"\u0000\u0000EA\u0001\u0000\u0000\u0000EB\u0001\u0000\u0000\u0000EC\u0001"+
-		"\u0000\u0000\u0000ED\u0001\u0000\u0000\u0000F\u000b\u0001\u0000\u0000"+
-		"\u0000GH\u0003\u000e\u0007\u0000H\r\u0001\u0000\u0000\u0000IJ\u0003\u0012"+
-		"\t\u0000JK\u0003\u0010\b\u0000K\u000f\u0001\u0000\u0000\u0000LM\u0005"+
-		"\u0003\u0000\u0000MN\u0003\u0012\t\u0000NO\u0003\u0010\b\u0000OV\u0001"+
-		"\u0000\u0000\u0000PQ\u0005\u0004\u0000\u0000QR\u0003\u0012\t\u0000RS\u0003"+
-		"\u0010\b\u0000SV\u0001\u0000\u0000\u0000TV\u0001\u0000\u0000\u0000UL\u0001"+
-		"\u0000\u0000\u0000UP\u0001\u0000\u0000\u0000UT\u0001\u0000\u0000\u0000"+
-		"V\u0011\u0001\u0000\u0000\u0000WX\u0003\u0016\u000b\u0000XY\u0003\u0014"+
-		"\n\u0000Y\u0013\u0001\u0000\u0000\u0000Z[\u0005\u0005\u0000\u0000[\\\u0003"+
-		"\u0016\u000b\u0000\\]\u0003\u0014\n\u0000]d\u0001\u0000\u0000\u0000^_"+
-		"\u0005\u0006\u0000\u0000_`\u0003\u0016\u000b\u0000`a\u0003\u0014\n\u0000"+
-		"ad\u0001\u0000\u0000\u0000bd\u0001\u0000\u0000\u0000cZ\u0001\u0000\u0000"+
-		"\u0000c^\u0001\u0000\u0000\u0000cb\u0001\u0000\u0000\u0000d\u0015\u0001"+
-		"\u0000\u0000\u0000ek\u0003\u0018\f\u0000fg\u0005\u0001\u0000\u0000gh\u0003"+
-		"\u0002\u0001\u0000hi\u0005\u0002\u0000\u0000ik\u0001\u0000\u0000\u0000"+
-		"je\u0001\u0000\u0000\u0000jf\u0001\u0000\u0000\u0000k\u0017\u0001\u0000"+
-		"\u0000\u0000lp\u0005\f\u0000\u0000mp\u0005\r\u0000\u0000np\u0005\u000e"+
-		"\u0000\u0000ol\u0001\u0000\u0000\u0000om\u0001\u0000\u0000\u0000on\u0001"+
-		"\u0000\u0000\u0000p\u0019\u0001\u0000\u0000\u0000\b!3:EUcjo";
+		"\u0001\u0005\u0001\u0005\u0003\u0005S\b\u0005\u0001\u0006\u0001\u0006"+
+		"\u0001\u0007\u0001\u0007\u0001\u0007\u0001\b\u0001\b\u0001\b\u0001\b\u0001"+
+		"\b\u0001\b\u0001\b\u0001\b\u0001\b\u0003\bc\b\b\u0001\t\u0001\t\u0001"+
+		"\t\u0001\n\u0001\n\u0001\n\u0001\n\u0001\n\u0001\n\u0001\n\u0001\n\u0001"+
+		"\n\u0003\nq\b\n\u0001\u000b\u0001\u000b\u0001\u000b\u0001\u000b\u0001"+
+		"\u000b\u0003\u000bx\b\u000b\u0001\f\u0001\f\u0001\f\u0000\u0001\b\r\u0000"+
+		"\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018\u0000\u0000"+
+		"\u0083\u0000\u001a\u0001\u0000\u0000\u0000\u0002!\u0001\u0000\u0000\u0000"+
+		"\u0004#\u0001\u0000\u0000\u0000\u00063\u0001\u0000\u0000\u0000\b@\u0001"+
+		"\u0000\u0000\u0000\nR\u0001\u0000\u0000\u0000\fT\u0001\u0000\u0000\u0000"+
+		"\u000eV\u0001\u0000\u0000\u0000\u0010b\u0001\u0000\u0000\u0000\u0012d"+
+		"\u0001\u0000\u0000\u0000\u0014p\u0001\u0000\u0000\u0000\u0016w\u0001\u0000"+
+		"\u0000\u0000\u0018y\u0001\u0000\u0000\u0000\u001a\u001b\u0003\u0002\u0001"+
+		"\u0000\u001b\u001c\u0005\u0000\u0000\u0001\u001c\u0001\u0001\u0000\u0000"+
+		"\u0000\u001d\"\u0003\u0004\u0002\u0000\u001e\"\u0003\f\u0006\u0000\u001f"+
+		"\"\u0003\u0006\u0003\u0000 \"\u0003\u0018\f\u0000!\u001d\u0001\u0000\u0000"+
+		"\u0000!\u001e\u0001\u0000\u0000\u0000!\u001f\u0001\u0000\u0000\u0000!"+
+		" \u0001\u0000\u0000\u0000\"\u0003\u0001\u0000\u0000\u0000#%\u0003\n\u0005"+
+		"\u0000$&\u0005\u000b\u0000\u0000%$\u0001\u0000\u0000\u0000%&\u0001\u0000"+
+		"\u0000\u0000&,\u0001\u0000\u0000\u0000\'-\u0003\b\u0004\u0000()\u0005"+
+		"\u0001\u0000\u0000)*\u0003\u0004\u0002\u0000*+\u0005\u0002\u0000\u0000"+
+		"+-\u0001\u0000\u0000\u0000,\'\u0001\u0000\u0000\u0000,(\u0001\u0000\u0000"+
+		"\u0000-\u0005\u0001\u0000\u0000\u0000./\u0005\u0001\u0000\u0000/0\u0003"+
+		"\u0006\u0003\u000001\u0005\u0002\u0000\u000014\u0001\u0000\u0000\u0000"+
+		"24\u0003\b\u0004\u00003.\u0001\u0000\u0000\u000032\u0001\u0000\u0000\u0000"+
+		"46\u0001\u0000\u0000\u000057\u0005\u000b\u0000\u000065\u0001\u0000\u0000"+
+		"\u000067\u0001\u0000\u0000\u000078\u0001\u0000\u0000\u000089\u0003\n\u0005"+
+		"\u00009\u0007\u0001\u0000\u0000\u0000:;\u0006\u0004\uffff\uffff\u0000"+
+		";A\u0003\u0018\f\u0000<=\u0005\u0001\u0000\u0000=>\u0003\b\u0004\u0000"+
+		">?\u0005\u0002\u0000\u0000?A\u0001\u0000\u0000\u0000@:\u0001\u0000\u0000"+
+		"\u0000@<\u0001\u0000\u0000\u0000AG\u0001\u0000\u0000\u0000BC\n\u0001\u0000"+
+		"\u0000CD\u0005\u000b\u0000\u0000DF\u0003\b\u0004\u0002EB\u0001\u0000\u0000"+
+		"\u0000FI\u0001\u0000\u0000\u0000GE\u0001\u0000\u0000\u0000GH\u0001\u0000"+
+		"\u0000\u0000H\t\u0001\u0000\u0000\u0000IG\u0001\u0000\u0000\u0000JS\u0005"+
+		"\u0003\u0000\u0000KS\u0005\u0004\u0000\u0000LS\u0005\u0005\u0000\u0000"+
+		"MS\u0005\u0006\u0000\u0000NS\u0005\u0007\u0000\u0000OS\u0005\b\u0000\u0000"+
+		"PS\u0005\t\u0000\u0000QS\u0005\n\u0000\u0000RJ\u0001\u0000\u0000\u0000"+
+		"RK\u0001\u0000\u0000\u0000RL\u0001\u0000\u0000\u0000RM\u0001\u0000\u0000"+
+		"\u0000RN\u0001\u0000\u0000\u0000RO\u0001\u0000\u0000\u0000RP\u0001\u0000"+
+		"\u0000\u0000RQ\u0001\u0000\u0000\u0000S\u000b\u0001\u0000\u0000\u0000"+
+		"TU\u0003\u000e\u0007\u0000U\r\u0001\u0000\u0000\u0000VW\u0003\u0012\t"+
+		"\u0000WX\u0003\u0010\b\u0000X\u000f\u0001\u0000\u0000\u0000YZ\u0005\u0003"+
+		"\u0000\u0000Z[\u0003\u0012\t\u0000[\\\u0003\u0010\b\u0000\\c\u0001\u0000"+
+		"\u0000\u0000]^\u0005\u0004\u0000\u0000^_\u0003\u0012\t\u0000_`\u0003\u0010"+
+		"\b\u0000`c\u0001\u0000\u0000\u0000ac\u0001\u0000\u0000\u0000bY\u0001\u0000"+
+		"\u0000\u0000b]\u0001\u0000\u0000\u0000ba\u0001\u0000\u0000\u0000c\u0011"+
+		"\u0001\u0000\u0000\u0000de\u0003\u0016\u000b\u0000ef\u0003\u0014\n\u0000"+
+		"f\u0013\u0001\u0000\u0000\u0000gh\u0005\u0005\u0000\u0000hi\u0003\u0016"+
+		"\u000b\u0000ij\u0003\u0014\n\u0000jq\u0001\u0000\u0000\u0000kl\u0005\u0006"+
+		"\u0000\u0000lm\u0003\u0016\u000b\u0000mn\u0003\u0014\n\u0000nq\u0001\u0000"+
+		"\u0000\u0000oq\u0001\u0000\u0000\u0000pg\u0001\u0000\u0000\u0000pk\u0001"+
+		"\u0000\u0000\u0000po\u0001\u0000\u0000\u0000q\u0015\u0001\u0000\u0000"+
+		"\u0000rx\u0003\u0018\f\u0000st\u0005\u0001\u0000\u0000tu\u0003\u0002\u0001"+
+		"\u0000uv\u0005\u0002\u0000\u0000vx\u0001\u0000\u0000\u0000wr\u0001\u0000"+
+		"\u0000\u0000ws\u0001\u0000\u0000\u0000x\u0017\u0001\u0000\u0000\u0000"+
+		"yz\u0005\f\u0000\u0000z\u0019\u0001\u0000\u0000\u0000\u000b!%,36@GRbp"+
+		"w";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

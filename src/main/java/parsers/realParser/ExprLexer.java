@@ -1,5 +1,5 @@
-// Generated from parser/Expr.g4 by ANTLR 4.12.0
-package parser;
+// Generated from parsers/realParser/IntegerExpr.g4 by ANTLR 4.12.0
+package parsers.realParser;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -89,7 +89,7 @@ public class ExprLexer extends Lexer {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Expr.g4"; }
+	public String getGrammarFileName() { return "IntegerExpr.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

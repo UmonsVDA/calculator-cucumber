@@ -1,8 +1,9 @@
 package view;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
-public class ExpressionLabel extends Label {
+public class ExpressionLabel extends TextField {
 
     private static ExpressionLabel instance;
 

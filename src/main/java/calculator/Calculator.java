@@ -1,6 +1,7 @@
 package calculator;
 
-import parser.MyParser;
+import parsers.integerParser.IntegerParser;
+import parsers.realParser.RealParser;
 import visitor.Evaluator;
 import visitor.RealNumberEvaluator;
 
@@ -38,7 +39,7 @@ public class Calculator {
      * @return the result of the conversion
      */
     public Expression read(String s){
-        return MyParser.parse(s,mathContext);
+        return IntegerParser.parse(s);
     }
 
     /**

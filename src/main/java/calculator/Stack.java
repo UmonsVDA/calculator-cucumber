@@ -1,4 +1,4 @@
-package parser;
+package calculator;
 
 import calculator.Expression;
 

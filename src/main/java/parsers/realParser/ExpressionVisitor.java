@@ -1,15 +1,14 @@
-package parser;
+package parsers.realParser;
 
 import calculator.*;
 
 import java.math.MathContext;
-import java.util.ArrayList;
 
 
 /**
  * This class implement the method to visit tokens
  */
-public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
+public class ExpressionVisitor extends ExprBaseVisitor<Expression> {
 
     /** Stack in which we store values as we visit the derivation tree*/
     private Stack stack = new Stack();

@@ -1,4 +1,4 @@
-package parser;
+package parsers.realParser;
 
 import calculator.Expression;
 import org.antlr.v4.runtime.CharStream;
@@ -13,7 +13,7 @@ import java.math.MathContext;
  * This class represent a parser that convert a string representing
  * an expression to an Expression object
  */
-public class MyParser {
+public class RealParser {
 
     /**
      * convert a string representing an expression to an Expression object
