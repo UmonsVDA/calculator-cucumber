@@ -5,7 +5,7 @@ import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
 
-public class TestArea { 
+public class TestArea {
 
     @Test
     public void testToSquareMeters() {
