@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 
 public class Currency extends Measurement {
     //Factors of different currency conversions to euros.
-    final private double $_TO_€ = 0.91636347; //dollars 
+    final private double $_TO_€ = 0.91636347; //dollars
     final private double ¥_TO_€ = 0.0068542225; //yens
     final private double £_TO_€ = 1.1383746; //pounds
     final private double CNY_TO_€ = 0.13306189; //renminbis

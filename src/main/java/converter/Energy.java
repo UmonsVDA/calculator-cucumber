@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class Energy extends Measurement {
-    //Factors of different energy conversions to Joules.
+    //Factors of different energy conversions to Joules. 
     final private double cal_TO_J = 4.184; //calories
     final private double eV_TO_J = 1.60218e-19; //electronvolt
     final private double kWh_TO_J = 3.6e6; //kiloWatt.h
