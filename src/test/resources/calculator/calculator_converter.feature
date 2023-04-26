@@ -1,6 +1,6 @@
 Feature: Conversion of measurement units
 
-  # This is just a comment.
+  # This is just a comment. 
   # You can start with a Background: that will be run before executing each scenario.
 
   Background:
