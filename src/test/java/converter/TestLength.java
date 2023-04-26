@@ -6,7 +6,6 @@ import org.junit.jupiter.api.*;
 import java.math.BigDecimal;
 
 public class TestLength {
-
     @Test
     public void testToMeters() {
         Length length = new Length("km");
