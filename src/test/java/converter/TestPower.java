@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestPower {
+public class TestPower { 
     @Test
     public void testToWatts() {
         Power power = new Power("PW");
