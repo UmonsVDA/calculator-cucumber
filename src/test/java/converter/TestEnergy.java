@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestEnergy { 
+public class TestEnergy {
     @Test
     public void testToJoules() {
         Energy energy = new Energy("cal");
