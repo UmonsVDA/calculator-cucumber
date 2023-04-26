@@ -11,7 +11,7 @@ import java.math.RoundingMode;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ConverterSteps {
+public class ConverterSteps { 
     private String measurement;
     private double value;
 

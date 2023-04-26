@@ -40,7 +40,7 @@ public class ConversionWindow {
         root.getChildren().add(toComboBox);
 
         //Entering required value to convert
-        TextField valueTextField = new TextField(); 
+        TextField valueTextField = new TextField();
         valueTextField.setPromptText("Enter value to convert");
         root.getChildren().add(new Label("Value :"));
         root.getChildren().add(valueTextField);
