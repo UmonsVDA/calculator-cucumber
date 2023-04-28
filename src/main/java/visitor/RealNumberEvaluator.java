@@ -48,15 +48,14 @@ public class RealNumberEvaluator extends Visitor {
     public void visit(Operation o) throws ArithmeticException, UnsupportedOperationException{
         ArrayList<BigDecimal> evaluatedArgs = new ArrayList<>();
         //first loop to recursively evaluate each subexpression
-        for (Expression a : o.args) {
+        for (Expression a : o.getArgs()) {
             a.accept(this);
             evaluatedArgs.add(computedValue);
         }
         //second loop to accumulate all the evaluated subresults
         BigDecimal temp = evaluatedArgs.get(0);
-        int max = evaluatedArgs.size();
-        for (int counter = 1; counter < max; counter++) {
-            temp = o.op(temp, evaluatedArgs.get(counter));
+        for (int i = 1; i < evaluatedArgs.size(); i++) {
+            temp = o.op(temp, evaluatedArgs.get(i));
         }
         // store the accumulated result
         computedValue = temp;

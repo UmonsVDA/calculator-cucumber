@@ -57,7 +57,7 @@ class TestCounting {
                 case "/"	->	e = new Divides(params);
                 default		->	fail();
             }
-        } catch (IllegalConstruction e) {
+        } catch (IllegalOperationException e) {
             fail();
         }
         e.accept(counter);

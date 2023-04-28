@@ -186,11 +186,13 @@ public class MyRationalNumber extends MyNumber {
         Long gcd = Utils.gcd(absNominator, absDenominator);
         return new MyRationalNumber(sign * absNominator / gcd, absDenominator / gcd);
     }
+    
+    public boolean isZero(){
+        return nominator == 0;
+    }
 
     public boolean isZero(){
         return nominator == 0;
     }
 
 }
-
-
