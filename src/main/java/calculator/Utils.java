@@ -15,6 +15,12 @@ public class Utils {
 
     }
 
+    /**
+     * Method that calculates the power of a base to an exponent
+     * @param base The base
+     * @param exponent The exponent
+     * @return The result of the power operation
+     */
     static long pow(long base, int exponent) {
         long result = 1;
         for (int i = 0; i < exponent; i++) {

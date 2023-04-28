@@ -5,6 +5,9 @@ import javafx.scene.layout.HBox;
 
 import java.util.List;
 
+/**
+ * This class create an HBox with a list of buttons and apply a style class to each button.
+ */
 public class ButtonsHBox extends HBox {
 
     public ButtonsHBox(List<? extends Button> buttonList, String styleClass) {

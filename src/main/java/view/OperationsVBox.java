@@ -32,6 +32,11 @@ public class OperationsVBox extends CalculatorPart {
         return instance;
     }
 
+    /**
+     * This method is used to create a HBox containing the first top buttons of this calculator part.
+     *
+     * @return The HBox containing the buttons.
+     */
     private HBox getFirstHBox() {
         // Button to create a rational number
         Button fracButton = new Button("X/Y");

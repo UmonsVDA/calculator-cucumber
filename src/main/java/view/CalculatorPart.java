@@ -20,6 +20,11 @@ public abstract class CalculatorPart extends VBox {
         return maxWidthNbButtons;
     }
 
+    /**
+     * This method is used to add an HBox to the calculator part.
+     *
+     * @param hbox The HBox to add.
+     */
     public void addHBox(HBox hbox) {
         getChildren().add(hbox);
         maxWidthNbButtons = Math.max(maxWidthNbButtons, hbox.getChildren().size());

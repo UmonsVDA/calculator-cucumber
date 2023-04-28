@@ -4,6 +4,9 @@ import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * Class for power conversions
+ */
 public class Power extends Measurement {
     //Factors of different power conversions to watts.
     final private double kW_TO_W = 1000; //kilowatts
@@ -27,18 +30,31 @@ public class Power extends Measurement {
         }
     }
 
-    //This method converts a given value to watts, so that we can use the factor
-    //to get the final desired value.
+    /**
+     * This method converts a value that is in the desired unit to watts.
+     * @param value the value to convert
+     * @return the value in watts
+     */
     public double toWatts(double value){
         return value*factor;
     }
 
-    //This method converts a value that is in watts to the desired unit.
+    /**
+     * This method converts a value that is in watts to the desired unit.
+     * @param value the value to convert
+     * @return the value in the desired unit
+     */
     public double fromWatts(double value){
         return value/factor;
     }
 
-    //The method doing the whole conversion and printing the results.
+    /**
+     * This method prints the conversion of a value from one unit to another.
+     * @param value the value to convert
+     * @param fromUnit the unit of the value
+     * @param toUnit the unit to convert to
+     * @return the converted value
+     */
     public static BigDecimal printConversion(double value, String fromUnit, String toUnit) {
         Power from = new Power(fromUnit);
         Power to = new Power(toUnit);

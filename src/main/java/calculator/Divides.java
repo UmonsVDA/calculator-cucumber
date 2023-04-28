@@ -55,11 +55,23 @@ public final class Divides extends Operation {
     { if(r==0) throw new ArithmeticException("Division by zero");
       return (l/r); }
 
+  /**
+   * The actual computation of the (binary) arithmetic division of two MyTime objects. This is not allowed.
+   * @param l The first MyTime object
+   * @param r The second MyTime object that should divide the first
+   * @throws RuntimeException Always, since this operation is not allowed
+   */
   @Override
   public MyTime op(MyTime l, MyTime r) {
     throw new RuntimeException("Sorry, you can't divide two dates.");
   }
 
+    /**
+     * The actual computation of the (binary) arithmetic division of a MyTime object and a MyRealNumber object. This is not allowed.
+     * @param l The MyTime object
+     * @param seconds The MyRealNumber object that should divide the MyTime object
+     * @throws RuntimeException Always, since this operation is not allowed
+     */
   @Override
   public MyTime op(MyTime l, MyRealNumber seconds) {
     throw new RuntimeException("Sorry, you can't divide a date and a number");
@@ -94,7 +106,11 @@ public final class Divides extends Operation {
 
     }
 
+  /**
+   * A method to accept a TimeVisitor
+   * @param v The TimeVisitor to accept
+   */
   @Override
-  public void accept(TimeVisitor v) {}
+    public void accept(TimeVisitor v) {}
 
 }

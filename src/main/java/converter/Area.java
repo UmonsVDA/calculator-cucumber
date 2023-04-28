@@ -4,6 +4,9 @@ import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * This class represents the Area measurement.
+ */
 public class Area extends Measurement {
     //Factors of different Area conversions to meters.
     final private double mm2_TO_m2 = 1e-6; //mm²
@@ -28,18 +31,31 @@ public class Area extends Measurement {
         }
     }
 
-    //This method converts a given value to meters, so that we can use the factor
-    //to get the final desired value.
+    /**
+     * This method converts a value that is in the desired unit to square meters.
+     * @param value The value to be converted
+     * @return The value in square meters
+     */
     public double toSquareMeters(double value){
         return value*factor;
     }
 
-    //This method converts a value that is in meters to the desired unit.
+    /**
+     * This method converts a value that is in square meters to the desired unit.
+     * @param value The value to be converted
+     * @return The value in the desired unit
+     */
     public double fromSquareMeters(double value){
         return value/factor;
     }
 
-    //The method doing the whole conversion and printing the results.
+    /**
+     * This method prints the conversion of a value from one unit to another.
+     * @param value The value to be converted
+     * @param fromUnit The unit of the value
+     * @param toUnit The unit to which the value will be converted
+     * @return The value in the desired unit
+     */
     public static BigDecimal printConversion(double value, String fromUnit, String toUnit) {
         Area from = new Area(fromUnit);
         Area to = new Area(toUnit);

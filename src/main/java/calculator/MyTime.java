@@ -64,6 +64,10 @@ public class MyTime implements Expression {
         dateInSeconds = date.toEpochSecond();
     }
 
+    /**
+     * Method to get the date in seconds
+     * @return the date in seconds
+     */
     public long toSeconds(){
         return dateInSeconds;
     }
