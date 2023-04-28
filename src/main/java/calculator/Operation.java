@@ -156,7 +156,6 @@ public abstract class Operation implements Expression
   @Override
   public final String toString() {
 	  if(Displayer.getInstance()==null) {
-		  System.out.println("null");
 		  Displayer.createDisplayer(true);
 		  String result = accept(Displayer.getInstance());
 		  Displayer.deleteDisplayer();

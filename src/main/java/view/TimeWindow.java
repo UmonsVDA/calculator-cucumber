@@ -301,7 +301,6 @@ public class TimeWindow {
                         case "days" ->
                                 myTime1.add(new MyRealNumber(value.getRealNumber().multiply(new BigDecimal("86400.0")).toString()));
                     };
-                    System.out.println(result.getDate());
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                     resultLabel.setText(result.getDate().format(formatter));
                 } catch (NullPointerException e) {
