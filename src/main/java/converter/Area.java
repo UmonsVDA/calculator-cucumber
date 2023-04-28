@@ -20,14 +20,14 @@ public class Area extends Measurement {
     private double factor;
 
     //This constructor will be useful to get the right factors.
-    public Area(String unit) {
+    public Area(String unit) throws Exception {
         try {
             //We set the factor depending on the asked unit using the names
             //we defined at the beginning.
             Field field = this.getClass().getDeclaredField(unit + "_TO_m2");
             factor = field.getDouble(this);
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            System.out.println("Unknown unit, try something else");
+            throw new Exception("Unknown unit, try something else");
         }
     }
 
@@ -56,7 +56,7 @@ public class Area extends Measurement {
      * @param toUnit The unit to which the value will be converted
      * @return The value in the desired unit
      */
-    public static BigDecimal printConversion(double value, String fromUnit, String toUnit) {
+    public static BigDecimal printConversion(double value, String fromUnit, String toUnit) throws Exception {
         Area from = new Area(fromUnit);
         Area to = new Area(toUnit);
 

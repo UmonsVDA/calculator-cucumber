@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 public class TestArea {
 
     @Test
-    public void testToSquareMeters() {
+    public void testToSquareMeters() throws Exception {
         Area area = new Area("km2");
         double result = area.toSquareMeters(5);
         double expected = 5e6;
@@ -16,7 +16,7 @@ public class TestArea {
     }
 
     @Test
-    public void testFromSquareMeters() {
+    public void testFromSquareMeters() throws Exception {
         Area area = new Area("mm2");
         double result = area.fromSquareMeters(10);
         double expected = 1e7;
