@@ -1,6 +1,5 @@
 package calculator;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -9,11 +8,11 @@ import java.util.List;
  */
  
 public class LeastCommonMultiple extends BinaryOperation {
-    public LeastCommonMultiple(List<Expression> elist) throws UnsupportedOperationException, IllegalConstruction {
+    public LeastCommonMultiple(List<Expression> elist) throws UnsupportedOperationException, IllegalConstruction, IllegalOperationException {
         super(elist);
     }
 
-    public LeastCommonMultiple(List<Expression> elist, Notation n) throws UnsupportedOperationException, IllegalConstruction {
+    public LeastCommonMultiple(List<Expression> elist, Notation n) throws UnsupportedOperationException, IllegalConstruction, IllegalOperationException {
         super(elist, n);
         symbol = "LCM";
     }
