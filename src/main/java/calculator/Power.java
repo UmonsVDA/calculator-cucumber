@@ -1,24 +1,21 @@
-package calculator.operations;
-
-import calculator.*;
+package calculator;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class GreatestCommonDivisor extends BinaryOperation {
-    public GreatestCommonDivisor(List<Expression> elist) throws IllegalOperationException {
+public class Power extends BinaryOperation {
+    public Power(List<Expression> elist) throws IllegalOperationException {
         super(elist);
     }
 
-    public GreatestCommonDivisor(List<Expression> elist, Notation n) throws IllegalOperationException {
+    public Power(List<Expression> elist, Notation n) throws IllegalOperationException {
         super(elist, n);
-        symbol = "GCD";
+        symbol = "^";
     }
-
 
     @Override
     public int op(int l, int r) {
-        return Math.toIntExact(Utils.gcd((long) l, (long) r));
+        return (int) Utils.pow(l, r);
     }
 
     @Override

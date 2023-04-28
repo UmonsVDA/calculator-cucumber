@@ -1,10 +1,6 @@
 package calculator;
 
 //Import Junit5 libraries for unit testing:
-import calculator.operations.Divides;
-import calculator.operations.Minus;
-import calculator.operations.Plus;
-import calculator.operations.Times;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

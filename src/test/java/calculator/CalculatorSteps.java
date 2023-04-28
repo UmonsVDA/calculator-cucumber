@@ -1,6 +1,5 @@
 package calculator;
 
-import calculator.operations.*;
 import io.cucumber.java.Before;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;

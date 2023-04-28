@@ -1,26 +1,21 @@
-package calculator.operations;
-
-import calculator.Expression;
-import calculator.IllegalOperationException;
-import calculator.MyRationalNumber;
-import calculator.Notation;
+package calculator;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class Modulo extends BinaryOperation {
-    public Modulo(List<Expression> elist) throws IllegalOperationException {
+public class LeastCommonMultiple extends BinaryOperation {
+    public LeastCommonMultiple(List<Expression> elist) throws IllegalOperationException {
         super(elist);
     }
 
-    public Modulo(List<Expression> elist, Notation n) throws IllegalOperationException {
+    public LeastCommonMultiple(List<Expression> elist, Notation n) throws IllegalOperationException {
         super(elist, n);
-        symbol = "%";
+        symbol = "LCM";
     }
 
     @Override
     public int op(int l, int r) {
-        return l % r;
+        return (int) ((l * r) / Utils.gcd((long) l, (long) r));
     }
 
     @Override

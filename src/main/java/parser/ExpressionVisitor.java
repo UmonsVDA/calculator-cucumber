@@ -1,7 +1,6 @@
 package parser;
 
 import calculator.*;
-import calculator.operations.*;
 
 import java.math.MathContext;
 import java.util.ArrayList;

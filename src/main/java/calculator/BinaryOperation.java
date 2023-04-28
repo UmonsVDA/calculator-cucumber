@@ -1,8 +1,5 @@
-package calculator.operations;
+package calculator;
 
-import calculator.Expression;
-import calculator.IllegalOperationException;
-import calculator.Notation;
 import visitor.Visitor;
 
 import java.util.List;

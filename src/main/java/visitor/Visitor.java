@@ -2,7 +2,7 @@ package visitor;
 
 import calculator.IllegalOperationException;
 import calculator.MyNumber;
-import calculator.operations.Operation;
+import calculator.Operation;
 
 /**
  * Visitor design pattern

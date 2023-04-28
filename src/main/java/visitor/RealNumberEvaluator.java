@@ -3,7 +3,7 @@ package visitor;
 import calculator.Expression;
 import calculator.IllegalOperationException;
 import calculator.MyNumber;
-import calculator.operations.Operation;
+import calculator.Operation;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

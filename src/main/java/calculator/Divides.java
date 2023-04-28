@@ -1,9 +1,4 @@
-package calculator.operations;
-
-import calculator.Expression;
-import calculator.IllegalOperationException;
-import calculator.MyRationalNumber;
-import calculator.Notation;
+package calculator;
 
 import java.math.BigDecimal;
 import java.util.List;

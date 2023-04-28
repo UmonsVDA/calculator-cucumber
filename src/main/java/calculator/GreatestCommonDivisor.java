@@ -1,23 +1,22 @@
-package calculator.operations;
-
-import calculator.*;
+package calculator;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class LeastCommonMultiple extends BinaryOperation {
-    public LeastCommonMultiple(List<Expression> elist) throws IllegalOperationException {
+public class GreatestCommonDivisor extends BinaryOperation {
+    public GreatestCommonDivisor(List<Expression> elist) throws IllegalOperationException {
         super(elist);
     }
 
-    public LeastCommonMultiple(List<Expression> elist, Notation n) throws IllegalOperationException {
+    public GreatestCommonDivisor(List<Expression> elist, Notation n) throws IllegalOperationException {
         super(elist, n);
-        symbol = "LCM";
+        symbol = "GCD";
     }
+
 
     @Override
     public int op(int l, int r) {
-        return (int) ((l * r) / Utils.gcd((long) l, (long) r));
+        return Math.toIntExact(Utils.gcd((long) l, (long) r));
     }
 
     @Override

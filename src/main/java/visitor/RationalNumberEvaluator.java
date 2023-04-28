@@ -4,7 +4,7 @@ import calculator.Expression;
 import calculator.IllegalOperationException;
 import calculator.MyNumber;
 import calculator.MyRationalNumber;
-import calculator.operations.Operation;
+import calculator.Operation;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,5 @@
 package calculator;
 
-import calculator.operations.Operation;
 import visitor.Visitor;
 
 import java.math.BigDecimal;
