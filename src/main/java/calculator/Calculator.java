@@ -1,7 +1,6 @@
 package calculator;
 
 import parser.MyParser;
-import visitor.Counter;
 import visitor.Evaluator;
 import visitor.RationalNumberEvaluator;
 import visitor.RealNumberEvaluator;
@@ -12,7 +11,7 @@ import java.math.RoundingMode;
 
 /**
  * This class represents the core logic of a Calculator.
- * It can be used to print and evaluate artihmetic expressions.
+ * It can be used to print and evaluate arithmetic expressions.
  *
  * @author tommens
  */
@@ -47,33 +46,6 @@ public class Calculator {
         return MyParser.parse(s, mathContext);
     }
 
-    /**
-     * Prints an arithmetic expression provided as input parameter.
-     *
-     * @param e the arithmetic Expression to be printed
-     * @see #printExpressionDetails(Expression)
-     */
-    public void print(Expression e) {
-        System.out.println("The result of evaluating expression " + e);
-        System.out.println("is: " + eval(e) + ".");
-        System.out.println();
-    }
-
-    /**
-     * Prints verbose details of an arithmetic expression provided as input parameter.
-     *
-     * @param e the arithmetic Expression to be printed
-     * @see #print(Expression)
-     */
-    public void printExpressionDetails(Expression e) {
-        Counter counter = new Counter();
-        e.accept(counter);
-        print(e);
-        System.out.print("It contains " + counter.getCountDepth() + " levels of nested expressions, ");
-        System.out.print(counter.getCountOps() + " operations");
-        System.out.println(" and " + counter.getCountNbs() + " numbers.");
-        System.out.println();
-    }
 
     /**
      * Evaluates an arithmetic expression and returns its result
@@ -96,7 +68,7 @@ public class Calculator {
      * @param e the arithmetic Expression to be evaluated
      * @return The result of the evaluation
      */
-    public BigDecimal evalReal(Expression e) throws ArithmeticException{
+    public BigDecimal evalReal(Expression e) throws ArithmeticException, UnsupportedOperationException{
         // create a new visitor to evaluate expressions
         RealNumberEvaluator v = new RealNumberEvaluator();
         // and ask the expression to accept this visitor to start the evaluation process
@@ -111,22 +83,12 @@ public class Calculator {
      * @param e the arithmetic Expression to be evaluated
      * @return The result of the evaluation as a rational number
      */
-    public MyRationalNumber evalRational(Expression e) throws ArithmeticException{
+    public MyRationalNumber evalRational(Expression e) throws ArithmeticException, UnsupportedOperationException{
         RationalNumberEvaluator v = new RationalNumberEvaluator();
         e.accept(v);
         return v.getResult();
     }
 
-    /**
-     * Prints an arithmetic expression provided as input parameter.
-     *
-     * @param e the arithmetic Expression to be printed
-     */
-    public void printReal(Expression e) {
-        System.out.println("The result of evaluating expression " + e);
-        System.out.println("is: " + evalReal(e) + ".");
-        System.out.println();
-    }
 
     /**
      * Set the precision of real number (the number of digits encoded)
@@ -152,17 +114,6 @@ public class Calculator {
     }
 
 
-    /**
-     * Prints an arithmetic expression provided as input parameter using rational numbers
-     *
-     * @param e the arithmetic Expression to be printed
-     */
-    public void printRational(Expression e) {
-        System.out.println("The result of evaluating expression " + e);
-        System.out.println("is: " + evalRational(e) + ".");
-        System.out.println();
-    }
-
     public MathContext getMathContext(){
         return mathContext;
     }
@@ -174,36 +125,41 @@ public class Calculator {
 
     public String evalExpression(String expr){
         Expression e = read(expr);
-        switch (currentType){
-            case  INTEGER -> {
-                try {
-                    return Integer.toString(eval(e));
-                } catch (ArithmeticException ex) {
-                    return "NaN";
+        if(currentType != null){
+            switch (currentType){
+                case  INTEGER -> {
+                    try {
+                        return Integer.toString(eval(e));
+                    } catch (ArithmeticException ex) {
+                        return "NaN";
+                    }
                 }
-            }
-            case  REAL -> {
-                try {
-                    return evalReal(e).toString();
-                } catch (ArithmeticException ex) {
-                    return "NaN";
+                case  REAL -> {
+                    try {
+                        return evalReal(e).toString();
+                    } catch (ArithmeticException ex) {
+                        return "NaN";
+                    }
+                    catch (UnsupportedOperationException ex){
+                        return "Unsupported operation";
+                    }
                 }
-            }
-            case RATIONAL -> {
-                try{
-                    return evalRational(e).toString();
-                } catch (ArithmeticException ex) {
-                    return "NaN";
+                case RATIONAL -> {
+                    try{
+                        return evalRational(e).toString();
+                    } catch (ArithmeticException ex) {
+                        return "NaN";
+                    }
+                    catch (UnsupportedOperationException ex){
+                        return "Unsupported operation";
+                    }
                 }
             }
         }
+
         return "Error";
+
+
     }
 
-    /*
-     We could also have other methods, e.g. to verify whether an expression is syntactically correct
-     public Boolean validate(Expression e)
-     or to simplify some expression
-     public Expression simplify(Expression e)
-    */
 }
