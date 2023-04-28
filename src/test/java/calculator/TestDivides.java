@@ -17,7 +17,7 @@ class TestDivides {
 	private List<Expression> params;
 
 	@BeforeEach
-	void setUp() {
+	void setUp() throws IllegalOperationException {
 		  params = Arrays.asList(new MyInteger(value1), new MyInteger(value2));
 		  try {
 		  	op = new Divides(params);
@@ -34,13 +34,13 @@ class TestDivides {
 
 	@SuppressWarnings("AssertBetweenInconvertibleTypes")
 	@Test
-	void testConstructor2() throws IllegalConstruction {
+	void testConstructor2() throws IllegalConstruction, IllegalOperationException {
 		// A Times expression should not be the same as a Divides expression
 		assertNotSame(op, new Times(new ArrayList<>()));
 	}
 
 	@Test
-	void testEquals() throws IllegalConstruction {
+	void testEquals() throws IllegalConstruction, IllegalOperationException {
 		// Two similar expressions, constructed separately (and using different constructors) should be equal
 		List<Expression> p = Arrays.asList(new MyInteger(value1), new MyInteger(value2));
 		Divides d = new Divides(p, Notation.INFIX);
@@ -54,7 +54,7 @@ class TestDivides {
 	}
 
 	@Test
-	void testHashCode() throws IllegalConstruction {
+	void testHashCode() throws IllegalConstruction, IllegalOperationException {
 		// Two similar expressions, constructed separately (and using different constructors) should have the same hashcode
 		List<Expression> p = Arrays.asList(new MyInteger(value1), new MyInteger(value2));
 		Divides e = new Divides(p, Notation.INFIX);

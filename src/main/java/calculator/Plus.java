@@ -23,7 +23,7 @@ public final class Plus extends Operation
      * @throws IllegalConstruction    If an empty list of expressions if passed as parameter
      * @see #Plus(List<Expression>,Notation)
      */
-    public /*constructor*/ Plus(List<Expression> elist) throws IllegalConstruction {
+    public /*constructor*/ Plus(List<Expression> elist) throws IllegalConstruction, IllegalOperationException {
         this(elist, null);
     }
 
@@ -37,7 +37,7 @@ public final class Plus extends Operation
      * @see #Plus(List<Expression>)
      * @see Operation#Operation(List<Expression>,Notation)
      */
-    public Plus(List<Expression> elist, Notation n) throws IllegalConstruction {
+    public Plus(List<Expression> elist, Notation n) throws IllegalConstruction, IllegalOperationException {
         super(elist,n);
         symbol = "+";
         neutral = 0;

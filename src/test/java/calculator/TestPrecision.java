@@ -22,7 +22,7 @@ public class TestPrecision {
     private Calculator calculator;
 
     @BeforeEach
-    void setup() throws IllegalConstruction {
+    void setup() throws IllegalConstruction, IllegalOperationException {
         calculator = new Calculator();
         String value1 = "3.14159";
         String value2 = "2.71828";

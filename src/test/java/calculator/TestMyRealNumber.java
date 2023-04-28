@@ -97,7 +97,7 @@ public class TestMyRealNumber {
         try{
             Divides divides = new Divides(new ArrayList<>(Arrays.asList(number,zero)));
             assertThrows(ArithmeticException.class, () -> divides.op(number.getRealNumber(),zero.getRealNumber()));
-        }catch (IllegalConstruction e){
+        }catch (IllegalConstruction | IllegalOperationException e){
             fail();
         }
     }

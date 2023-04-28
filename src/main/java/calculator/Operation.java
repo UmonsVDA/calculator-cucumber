@@ -50,8 +50,7 @@ public abstract class Operation implements Expression
 	 * @throws IllegalConstruction	Exception thrown if a null list of expressions is passed as argument
 	 */
 	protected /*constructor*/ Operation(List<Expression> elist)
-			throws IllegalConstruction
-	{
+			throws IllegalConstruction, IllegalOperationException {
 		this(elist, null);
 	}
 
@@ -60,13 +59,13 @@ public abstract class Operation implements Expression
 	 *
 	 * @param elist	The list of expressions passed as argument to the arithmetic operation
 	 * @param n 	The notation to be used to represent the operation
-	 * @throws IllegalConstruction	Exception thrown if a null list of expressions is passed as argument
+	 * @throws IllegalOperationException	Exception thrown if a null list of expressions is passed as argument
 	 */
 	protected /*constructor*/ Operation(List<Expression> elist,Notation n)
-			throws IllegalConstruction
+			throws IllegalOperationException
 	{
 		if (elist == null) {
-			throw new IllegalConstruction(); }
+			throw new IllegalOperationException(); }
 		else {
 			args = new ArrayList<>(elist);
 		}

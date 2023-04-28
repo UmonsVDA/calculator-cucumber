@@ -19,14 +19,14 @@ class GreatestCommonDivisorTest {
     private List<Expression> params;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IllegalOperationException {
         params = Arrays.asList(new MyInteger(value1),new MyInteger(value2));
         try { op = new GreatestCommonDivisor(params); }
         catch(IllegalConstruction e) { fail(); }
     }
 
     @Test
-    void testEquals() {
+    void testEquals() throws IllegalOperationException {
         // Two similar expressions, constructed separately (and using different constructors) should not be equal
         List<Expression> p = Arrays.asList(new MyInteger(value1), new MyInteger(value2));
         try {

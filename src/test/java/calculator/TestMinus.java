@@ -31,7 +31,7 @@ class TestMinus {
 
 	@SuppressWarnings("AssertBetweenInconvertibleTypes")
 	@Test
-	void testConstructor2() throws IllegalConstruction {
+	void testConstructor2() throws IllegalConstruction, IllegalOperationException {
 		// A Times expression should not be the same as a Minus expression
 		assertNotSame(op, new Times(new ArrayList<>()));
 	}

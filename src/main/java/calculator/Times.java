@@ -22,7 +22,7 @@ public final class Times extends Operation
   * @throws IllegalConstruction    If an empty list of expressions if passed as parameter
   * @see #Times(List<Expression>,Notation)
   */
- public /*constructor*/ Times(List<Expression> elist) throws IllegalConstruction {
+ public /*constructor*/ Times(List<Expression> elist) throws IllegalConstruction, IllegalOperationException {
   this(elist, null);
  }
 
@@ -36,7 +36,7 @@ public final class Times extends Operation
   * @see #Times(List<Expression>)
   * @see Operation#Operation(List<Expression>,Notation)
   */
- public Times(List<Expression> elist, Notation n) throws IllegalConstruction {
+ public Times(List<Expression> elist, Notation n) throws IllegalConstruction, IllegalOperationException {
   super(elist,n);
   symbol = "*";
   neutral = 1;

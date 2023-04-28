@@ -17,7 +17,7 @@ class TestPlus {
 	private List<Expression> params;
 
 	@BeforeEach
-	void setUp() throws IllegalConstruction {
+	void setUp() throws IllegalConstruction, IllegalOperationException {
 		  params = new ArrayList<>(Arrays.asList(new MyInteger(value1),new MyInteger(value2)));
 		op = new Plus(params);
 	}
@@ -30,13 +30,13 @@ class TestPlus {
 
 	@SuppressWarnings("AssertBetweenInconvertibleTypes")
 	@Test
-	void testConstructor2() throws IllegalConstruction {
+	void testConstructor2() throws IllegalConstruction, IllegalOperationException {
 		// A Times expression should not be the same as a Plus expression
 		assertNotSame(op, new Times(new ArrayList<>()));
 	}
 
 	@Test
-	void testEquals() throws IllegalConstruction {
+	void testEquals() throws IllegalConstruction, IllegalOperationException {
 		// Two similar expressions, constructed separately (and using different constructors) should be equal
 		ArrayList<Expression> p = new ArrayList<>(Arrays.asList(new MyInteger(value1), new MyInteger(value2)));
 		Plus e = new Plus(p, Notation.INFIX);
@@ -52,7 +52,7 @@ class TestPlus {
 	}
 
 	@Test
-	void testHashCode() throws IllegalConstruction {
+	void testHashCode() throws IllegalConstruction, IllegalOperationException {
 		// Two similar expressions, constructed separately (and using different constructors) should have the same hashcode
 		ArrayList<Expression> p = new ArrayList<>(Arrays.asList(new MyInteger(value1), new MyInteger(value2)));
 		Plus e = new Plus(p, Notation.INFIX);

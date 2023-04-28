@@ -18,7 +18,7 @@ class TestMyNumber {
 	}
 
 	@Test
-	void testEquals() throws IllegalConstruction {
+	void testEquals() throws IllegalConstruction, IllegalOperationException {
 		// Two distinct MyNumber, constructed separately (using a different constructor) but containing the same value should be equal
 		assertEquals(new MyInteger(value), number);
 		// Two MyNumbers containing a distinct value should not be equal:

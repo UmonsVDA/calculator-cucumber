@@ -6,11 +6,11 @@ import java.util.List;
  * This class represents the arithmetic operation Power ("^").
  */
 public class Power extends Operation {
-    public Power(List<Expression> elist) throws IllegalConstruction {
+    public Power(List<Expression> elist) throws IllegalConstruction, IllegalOperationException {
         super(elist);
     }
 
-    public Power(List<Expression> elist, Notation n) throws IllegalConstruction {
+    public Power(List<Expression> elist, Notation n) throws IllegalConstruction, IllegalOperationException {
         super(elist, n);
         symbol = "^";
     }
