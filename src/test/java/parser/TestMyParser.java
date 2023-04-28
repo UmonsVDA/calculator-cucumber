@@ -1,31 +1,31 @@
 package parser;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import calculator.*;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class TestMyParser {
 
     @Test
-    void testPrefix(){
+    void testPrefix() {
         String testString = "+(1,2,3)";
         Expression e = MyParser.parse(testString);
         Operation op = (Operation) e;
-        assertEquals(Notation.PREFIX,op.notation);
+        assertEquals(Notation.PREFIX, op.getNotation());
     }
 
     @Test
-    void testInfix(){
+    void testInfix() {
         String testString = "3+2";
         Expression e = MyParser.parse(testString);
         Operation op = (Operation) e;
-        assertEquals(Notation.INFIX,op.notation);
+        assertEquals(Notation.INFIX, op.getNotation());
     }
 
     @Test
-    void testMultipleInfix(){
+    void testMultipleInfix() {
         String testString = "1+2-3*4/6";
         String expected = "( ( 1 + 2 ) - ( ( 3 * 4 ) / 6 ) )";
         Expression e = MyParser.parse(testString);
@@ -33,15 +33,15 @@ public class TestMyParser {
     }
 
     @Test
-    void testPostfix(){
+    void testPostfix() {
         String testString = "(3,6,8)-";
         Expression e = MyParser.parse(testString);
         Operation op = (Operation) e;
-        assertEquals(Notation.POSTFIX,op.notation);
+        assertEquals(Notation.POSTFIX, op.getNotation());
     }
 
     @Test
-    void testMultipleExpr(){
+    void testMultipleExpr() {
         String testString = "+(1,2,(*(6,3,(-(7,3)))))";
         String expectedString = "+ (1, 2, * (6, 3, - (7, 3)))";
         Expression e = MyParser.parse(testString);
@@ -49,7 +49,7 @@ public class TestMyParser {
     }
 
     @Test
-    void testMultipleTypeExpr(){
+    void testMultipleTypeExpr() {
         String testString = "-(1,(1+2))";
         String expectedString = "- (1, + (1, 2))";
         Expression e = MyParser.parse(testString);
@@ -61,26 +61,26 @@ public class TestMyParser {
         String testString = "-(1,(1+2))";
         String expectedString = "- (1, ( 1 + 2 ))";
         Expression e = MyParser.parse(testString);
-        assertEquals(expectedString,e.toString());
+        assertEquals(expectedString, e.toString());
     }
 
 
     @Test
-    void testInteger(){
+    void testInteger() {
         String testString = "12";
         Expression e = MyParser.parse(testString);
         assertEquals(MyInteger.class, e.getClass());
     }
 
     @Test
-    void testReal(){
+    void testReal() {
         String testString = "3.14";
         Expression e = MyParser.parse(testString);
         assertEquals(MyRealNumber.class, e.getClass());
     }
 
     @Test
-    void testPosScienceReal(){
+    void testPosScienceReal() {
         String testString = "3.14E+5";
         Expression e = MyParser.parse(testString);
         assertEquals(MyRealNumber.class, e.getClass());
@@ -89,33 +89,33 @@ public class TestMyParser {
         assertEquals(MyRealNumber.class, e2.getClass());
         MyRealNumber n1 = (MyRealNumber) e;
         MyRealNumber n2 = (MyRealNumber) e2;
-        assertEquals(n1,n2);
+        assertEquals(n1, n2);
     }
 
     @Test
-    void testNegScienceReal(){
+    void testNegScienceReal() {
         String testString = "3.14E-12";
         Expression e = MyParser.parse(testString);
         assertEquals(MyRealNumber.class, e.getClass());
     }
 
     @Test
-    void testRational(){
+    void testRational() {
         String testString = "5_6";
         Expression e = MyParser.parse(testString);
         assertEquals(MyRationalNumber.class, e.getClass());
     }
 
     @Test
-    void testOperation(){
+    void testOperation() {
         String values = "(1,2,3)";
         String testString;
-        String[] op = new String[]{"+","-","/","*"};
-        Class[] opClass = new Class[]{Plus.class,Minus.class,Divides.class,Times.class};
-        for (int i=0; i<4; i++){
+        String[] op = new String[]{"+", "-", "/", "*"};
+        Class[] opClass = new Class[]{Plus.class, Minus.class, Divides.class, Times.class};
+        for (int i = 0; i < 4; i++) {
             testString = op[i].concat(values);
             Expression e = MyParser.parse(testString);
-            assertEquals(opClass[i],e.getClass());
+            assertEquals(opClass[i], e.getClass());
         }
     }
 }
