@@ -2,7 +2,6 @@ package calculator;
 
 import visitor.Counter;
 import visitor.Displayer;
-import visitor.TimeVisitor;
 import visitor.Visitor;
 
 /**
@@ -63,8 +62,7 @@ public interface Expression {
         counter.visit(this);
     }
 
-    
-    void accept(TimeVisitor v);
+
 }
 
 

@@ -1,6 +1,5 @@
 package calculator;
 
-import visitor.TimeVisitor;
 import visitor.Visitor;
 
 import java.math.BigDecimal;
@@ -46,10 +45,6 @@ public abstract class MyNumber implements Expression {
       v.visit(this);
   }
 
-
-
-    @Override
-    public void accept(TimeVisitor v) {}
 
     @Override
     public abstract boolean equals(Object obj);

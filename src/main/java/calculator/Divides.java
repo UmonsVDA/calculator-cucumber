@@ -1,7 +1,5 @@
 package calculator;
 
-import visitor.TimeVisitor;
-
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.List;
@@ -88,12 +86,5 @@ public final class Divides extends Operation {
         return l.divide(r);
 
     }
-
-  /**
-   * A method to accept a TimeVisitor
-   * @param v The TimeVisitor to accept
-   */
-  @Override
-    public void accept(TimeVisitor v) {}
 
 }

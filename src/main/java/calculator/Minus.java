@@ -1,7 +1,5 @@
 package calculator;
 
-import visitor.TimeVisitor;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -76,10 +74,5 @@ public final class Minus extends Operation {
     @Override
     public MyRationalNumber op(MyRationalNumber l, MyRationalNumber r) {
         return l.subtract(r);
-    }
-
-    @Override
-    public void accept(TimeVisitor v) {
-        v.visit(this);
     }
 }
