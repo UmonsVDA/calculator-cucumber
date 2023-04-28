@@ -76,15 +76,5 @@ public final class Times extends Operation
  }
 
  @Override
- public MyTime op(MyTime l, MyTime r) {
-  throw new RuntimeException("Sorry, you can't multiply two dates.");
- }
-
- @Override
- public MyTime op(MyTime l, MyRealNumber seconds) {
-  throw new RuntimeException("Sorry, you can't multiply a date and a number.");
- }
-
- @Override
  public void accept(TimeVisitor v) {}
 }
