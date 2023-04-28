@@ -29,7 +29,7 @@ public class TimeEvaluator extends TimeVisitor{
      *
      * @param o The operation being visited
      */
-    public void visit(Operation o) {
+    public void visit(Operation o) throws UnsupportedOperationException {
         ArrayList<MyTime> evaluatedArgs = new ArrayList<>();
         //first loop to recursively evaluate each subexpression
         for(Expression a:o.args) {

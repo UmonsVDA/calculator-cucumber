@@ -70,7 +70,15 @@ public class TestMyRealNumber {
         // Two MyNumbers containing a distinct value should not be equal:
         assertNotEquals(new MyRealNumber("2.1"),number);
         assertEquals(number, number); // Identity check
-        assertNotEquals(new MyInteger(2),new MyRealNumber(2));
+        assertFalse(new MyRealNumber(2).equals(new MyInteger(2)));
+    }
+
+    @Test
+    void testHashcode(){
+
+        assertFalse(new MyRealNumber(2).hashCode() == new MyRealNumber(3).hashCode());
+        assertTrue(new MyRealNumber(2).hashCode() == new MyRealNumber(2).hashCode());
+
     }
 
     @Test
