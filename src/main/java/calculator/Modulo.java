@@ -6,11 +6,11 @@ import java.util.List;
  * This class represents the arithmetic operation Modulo ("%").
  */
 public class Modulo extends Operation {
-    public Modulo(List<Expression> elist) throws IllegalConstruction {
+    public Modulo(List<Expression> elist) throws IllegalConstruction, IllegalOperationException {
         super(elist);
     }
 
-    public Modulo(List<Expression> elist, Notation n) throws IllegalConstruction {
+    public Modulo(List<Expression> elist, Notation n) throws IllegalConstruction, IllegalOperationException {
         super(elist, n);
         symbol = "%";
     }

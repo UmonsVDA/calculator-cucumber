@@ -5,11 +5,11 @@ import visitor.Visitor;
 import java.util.List;
 
 public abstract class BinaryOperation extends Operation{
-    protected BinaryOperation(List<Expression> elist) throws UnsupportedOperationException, IllegalConstruction {
+    protected BinaryOperation(List<Expression> elist) throws UnsupportedOperationException, IllegalConstruction, IllegalOperationException {
         super(elist);
     }
 
-    protected BinaryOperation(List<Expression> elist, Notation n) throws UnsupportedOperationException, IllegalConstruction {
+    protected BinaryOperation(List<Expression> elist, Notation n) throws UnsupportedOperationException, IllegalConstruction, IllegalOperationException {
         super(elist, n);
     }
 

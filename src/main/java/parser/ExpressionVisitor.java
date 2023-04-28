@@ -155,7 +155,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             Divides op = new Divides(stack.popArray(),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalConstruction | IllegalOperationException exception){
             return  null;
         }
     }
@@ -408,7 +408,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
                 return op;
             }
             return e;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalConstruction | IllegalOperationException exception){
             return null;
         }
     }

@@ -8,11 +8,11 @@ import java.util.List;
  */
 public class GreatestCommonDivisor extends Operation {
 
-    public GreatestCommonDivisor(List<Expression> elist) throws IllegalConstruction {
+    public GreatestCommonDivisor(List<Expression> elist) throws IllegalConstruction, IllegalOperationException {
         super(elist);
     }
 
-    public GreatestCommonDivisor(List<Expression> elist, Notation n) throws IllegalConstruction {
+    public GreatestCommonDivisor(List<Expression> elist, Notation n) throws IllegalConstruction, IllegalOperationException {
         super(elist, n);
         symbol = "GCD";
     }
