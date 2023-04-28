@@ -4,6 +4,9 @@ import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * Class for time measurements
+ */
 public class Time extends Measurement {
     //Factors of different time conversions to seconds.
     final private double ms_TO_s = 0.001; //milliseconds
@@ -28,18 +31,31 @@ public class Time extends Measurement {
         }
     }
 
-    //This method converts a given value to seconds, so that we can use the factor
-    //to get the final desired value.
+    /**
+     * This method converts a value that is in the desired unit to seconds.
+     * @param value the value to convert
+     * @return the value in seconds
+     */
     public double toSeconds(double value){
         return value*factor;
     }
 
-    //This method converts a value that is in seconds to the desired unit.
+    /**
+     * This method converts a value that is in seconds to the desired unit.
+     * @param value the value to convert
+     * @return the value in the desired unit
+     */
     public double fromSeconds(double value){
         return value/factor;
     }
 
-    //The method doing the whole conversion and printing the results.
+    /**
+     * This method prints the conversion of a value from one unit to another.
+     * @param value the value to convert
+     * @param fromUnit the unit of the value
+     * @param toUnit the unit to convert to
+     * @return the converted value
+     */
     public static BigDecimal printConversion(double value, String fromUnit, String toUnit) {
         Time from = new Time(fromUnit);
         Time to = new Time(toUnit);

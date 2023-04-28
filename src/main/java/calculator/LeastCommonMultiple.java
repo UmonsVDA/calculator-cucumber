@@ -3,6 +3,11 @@ package calculator;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * This class represents the Least Common Multiple operation (LCM)
+ *
+ */
+ 
 public class LeastCommonMultiple extends BinaryOperation {
     public LeastCommonMultiple(List<Expression> elist) throws UnsupportedOperationException, IllegalConstruction {
         super(elist);
@@ -13,18 +18,15 @@ public class LeastCommonMultiple extends BinaryOperation {
         symbol = "LCM";
     }
 
+    /**
+     * The actual computation of the (binary) LCM of two integers
+     * @param l	 first argument of the binary operation
+     * @param r	second argument of the binary operation
+     * @return The LCM of the two integers
+     */
     @Override
     public int op(int l, int r) {
         return (int) ((l * r) / Utils.gcd((long) l, (long) r));
     }
 
-    @Override
-    public BigDecimal op(BigDecimal l, BigDecimal r) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public MyRationalNumber op(MyRationalNumber l, MyRationalNumber r) {
-        throw new UnsupportedOperationException();
-    }
 }

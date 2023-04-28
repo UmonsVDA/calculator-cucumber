@@ -44,6 +44,10 @@ public class CalculatorView extends VBox {
         return instance;
     }
 
+    /**
+     * This method is used to add a calculator part to the calculator.
+     * @param calculatorPart
+     */
     private void addCalculatorPart(CalculatorPart calculatorPart) {
         calculatorParts.add(calculatorPart);
         setTotalHeightRequired(calculatorPart.getChildren().size());
@@ -92,6 +96,10 @@ public class CalculatorView extends VBox {
         ResultLabel.getInstance().prefHeightProperty().bind(heightProperty().multiply(1 / totalHeightRequired));
     }
 
+    /**
+     * This method is used to add a MenuBar to the calculator. This MeuBar let you change the real numbers settings.
+     * @return The MenuBar.
+     */
     private MenuBar buildMenuBar(){
         MenuBar menuBar = new MenuBar();
         Menu settingsMenu = new Menu("Settings");

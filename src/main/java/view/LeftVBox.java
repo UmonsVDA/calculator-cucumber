@@ -30,6 +30,11 @@ public class LeftVBox extends CalculatorPart {
         return instance;
     }
 
+    /**
+     * This method is used to create the HBox containing the 0 button, the ArithmeticSelectorButton and the = button.
+     *
+     * @return The HBox containing the 0 button and the = button.
+     */
     private HBox getBottomHBox() {
         // Button to evaluate the expression
         Button resultButton = new Button("=");

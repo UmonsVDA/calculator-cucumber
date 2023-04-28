@@ -2,6 +2,9 @@ package view;
 
 import javafx.scene.control.TextField;
 
+/**
+ * This class is used to display the expression entered by the user. This can also be modify by the user without using the buttons.
+ */
 public class ExpressionTextField extends TextField {
 
     private static ExpressionTextField instance;
@@ -11,6 +14,11 @@ public class ExpressionTextField extends TextField {
         getStyleClass().add("expression-label");
     }
 
+    /**
+     * This method returns the unique instance of the ExpressionTextField.
+     *
+     * @return The unique instance of the ExpressionTextField.
+     */
     public static ExpressionTextField getInstance() {
         if (instance == null)
             instance = new ExpressionTextField();

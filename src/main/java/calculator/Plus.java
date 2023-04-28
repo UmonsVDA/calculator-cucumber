@@ -75,10 +75,24 @@ public final class Plus extends Operation
     public MyRationalNumber op(MyRationalNumber l, MyRationalNumber r) {
         return l.add(r);
     }
+
+    /**
+     * The actual computation of the (binary) arithmetic addition of a MyTime and a MyRealNumber objects
+     * @param l	 first argument of the binary operation
+     * @param seconds	second argument of the binary operation
+     * @return The MyTime object that is the result of the addition
+     */
     @Override
     public MyTime op(MyTime l, MyRealNumber seconds) {
         return l.add(seconds);
     }
+
+    /**
+     * The actual computation of the (binary) arithmetic addition of two MyTime objects
+     * @param l	 first argument of the binary operation
+     * @param r	second argument of the binary operation
+     * @return The MyTime object that is the result of the addition
+     */
     @Override
     public MyTime op(MyTime l, MyTime r) {
         throw new RuntimeException("Sorry, you can't add two dates");

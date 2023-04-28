@@ -4,6 +4,9 @@ import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * This class represents the Currency measurement.
+ */
 public class Currency extends Measurement {
     //Factors of different currency conversions to euros.
     final private double $_TO_€ = 0.91636347; //dollars
@@ -28,18 +31,32 @@ public class Currency extends Measurement {
         }
     }
 
-    //This method converts a given value to meters, so that we can use the factor
-    //to get the final desired value.
+    /**
+     * This method converts a value that is in the desired unit to euros.
+     * @param value The value to be converted
+     * @return The value in euros
+     */
+
     public double toEuros(double value){
         return value*factor;
     }
 
-    //This method converts a value that is in meters to the desired unit.
+    /**
+     * This method converts a value that is in euros to the desired unit.
+     * @param value The value to be converted
+     * @return The value in the desired unit
+     */
     public double fromEuros(double value){
         return value/factor;
     }
 
-    //The method doing the whole conversion and printing the results.
+    /**
+     * This method prints the conversion of a value from one unit to another.
+     * @param value The value to be converted
+     * @param fromUnit The unit of the value
+     * @param toUnit The unit to which the value will be converted
+     * @return The value in the desired unit
+     */
     public static BigDecimal printConversion(double value, String fromUnit, String toUnit) {
         Currency from = new Currency(fromUnit);
         Currency to = new Currency(toUnit);
