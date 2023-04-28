@@ -3,6 +3,7 @@ Code quality: ![Maven Build](https://github.com/UmonsVDA/calculator-cucumber/act
 Test coverage: ![Coverage](.github/badges/jacoco.svg)
 ![Branches](.github/badges/branches.svg)
 
+
 # Calculating arithmetic expressions
 
 ## About
