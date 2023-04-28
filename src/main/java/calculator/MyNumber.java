@@ -1,32 +1,40 @@
 package calculator;
 
+import visitor.TimeVisitor;
 import visitor.Visitor;
 
+import java.math.BigDecimal;
+
 /**
- * MyNumber is a concrete class that represents arithmetic numbers,
+ * MyNumber is an abstract class that represents arithmetic numbers,
  * which are a special kind of Expressions, just like operations are.
  *
  * @see Expression
  * @see Operation
  */
-public class MyNumber implements Expression
-{
-  private final int value;
-
-    /** getter method to obtain the value contained in the object
-     *
-     * @return The integer number contained in the object
-     */
-  public Integer getValue() { return value; }
+public abstract class MyNumber implements Expression {
 
     /**
-     * Constructor method
+     * abstract method to obtain the integer value contain in the object
      *
-     * @param v The integer value to be contained in the object
+     * @return The integer number contain in the object
      */
-    public /*constructor*/ MyNumber(int v) {
-	  value=v;
-	  }
+    public abstract Integer getInteger();
+
+    /**
+     * abstract method to obtain the real number contain in the object
+     *
+     * @return The real number contained in the object
+     */
+    public abstract BigDecimal getRealNumber();
+
+
+    /**
+     * abstract method to obtain the rational number corresponding to the value of the object
+     *
+     * @return The rational number contain in the object
+     */
+    public abstract MyRationalNumber getRational() throws ArithmeticException;
 
     /**
      * accept method to implement the visitor design pattern to traverse arithmetic expressions.
@@ -34,78 +42,18 @@ public class MyNumber implements Expression
      *
      * @param v	The visitor object
      */
-  public void accept(Visitor v) {
+  public void accept(Visitor v) throws ArithmeticException{
       v.visit(this);
   }
 
 
-    /** The depth of a number expression is always 0
-     *
-     * @return The depth of a number expression
-     */
-  public int countDepth() {
-	  return 0;
-  }
 
-    /** The number of operations contained in a number expression is always 0
-     *
-     * @return The number of operations contained in a number expression
-     */
-  public int countOps() {
-	  return 0;
-  }
+    @Override
+    public void accept(TimeVisitor v) {}
 
-    /** The number of numbers contained in a number expression is always 1
-     *
-     * @return The number of numbers contained in  a number expression
-     */
-  public int countNbs() {
-	  return 1;
-  }
+    @Override
+    public abstract boolean equals(Object obj);
 
-    /**
-     * Convert a number into a String to allow it to be printed.
-     *
-     * @return	The String that is the result of the conversion.
-     */
-  @Override
-  public String toString() {
-	  return Integer.toString(value);
-  }
-
-  /** Two MyNumber expressions are equal if the values they contain are equal
-   *
-   * @param o The object to compare to
-   * @return  A boolean representing the result of the equality test
-   */
-  @Override
-  public boolean equals(Object o) {
-      // No object should be equal to null (not including this check can result in an exception if a MyNumber is tested against null)
-      if (o == null) return false;
-
-      // If the object is compared to itself then return true
-      if (o == this) {
-          return true;
-      }
-
-      // If the object is of another type then return false
-      if (!(o instanceof MyNumber)) {
-            return false;
-      }
-      return this.value == ((MyNumber)o).value;
-      // Used == since the contained value is a primitive value
-      // If it had been a Java object, .equals() would be needed
-  }
-
-    /** The method hashCode needs to be overridden it the equals method is overridden;
-     * 	otherwise there may be problems when you use your object in hashed collections
-     * 	such as HashMap, HashSet, LinkedHashSet.
-     *
-     * @return	The result of computing the hash.
-     */
-  @Override
-  public int hashCode() {
-		return value;
-  }
-
+    @Override
+    public abstract int hashCode();
 }

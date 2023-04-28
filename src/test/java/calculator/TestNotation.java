@@ -14,9 +14,9 @@ class TestNotation {
     /* This is an auxilary method to avoid code duplication.
      */
 	void testNotation(String s,Operation o,Notation n) {
-		assertEquals(s, o.toString(n));
+		assertEquals(s, o.printOperation(n));
 		o.notation = n;
-		assertEquals(s, o.toString());
+		assertEquals(s, o.printOperation());
 	}
 
 	/* This is an auxilary method to avoid code duplication.
@@ -37,7 +37,7 @@ class TestNotation {
 		int value2 = 6;
 		Operation op = null;
 		//List<Expression> params = new ArrayList<>(Arrays.asList(new MyNumber(value1),new MyNumber(value2)));
-		List<Expression> params = Arrays.asList(new MyNumber(value1),new MyNumber(value2));
+		List<Expression> params = Arrays.asList(new MyInteger(value1),new MyInteger(value2));
 		try {
 			//construct another type of operation depending on the input value
 			//of the parameterised test
