@@ -120,7 +120,6 @@ public class Calculator {
 
     public void setType(ArithmeticType type) {
         currentType = type;
-        System.out.println(currentType);
     }
 
     public String evalExpression(String expr){

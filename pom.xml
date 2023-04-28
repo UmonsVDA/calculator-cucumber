@@ -142,6 +142,10 @@
                     <excludes>
                         <exclude>view/*.class</exclude>
                         <exclude>calculator/Main.class</exclude>
+                        <exclude>parser/ExprBase*.class</exclude>
+                        <exclude>parser/ExprL*.class</exclude>
+                        <exclude>parser/ExprParser*.class</exclude>
+                        <exclude>parser/ExprVisitor.class</exclude>
                     </excludes>
                 </configuration>
             </plugin>
