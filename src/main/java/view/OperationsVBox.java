@@ -39,7 +39,7 @@ public class OperationsVBox extends CalculatorPart {
         fracButton.setTooltip(new Tooltip("Use this button to create a rational number. Enter the nominator, press this button and enter the denominator."));
 
         HBox hBox = new ButtonsHBox(
-                List.of(new GenericButton("("), new GenericButton(")"), new GenericButton(".") , new GenericButton("π"),fracButton),
+                List.of(new GenericButton("("), new GenericButton(","), new GenericButton(")") , new GenericButton("π"),fracButton),
                 "operator-button");
         hBox.prefHeightProperty().bind(heightProperty());
         hBox.prefWidthProperty().bind(widthProperty());
@@ -58,6 +58,7 @@ public class OperationsVBox extends CalculatorPart {
             ExpressionTextField.getInstance().setText("");
             ResultLabel.getInstance().setText("");
         });
+        clearButton.setTooltip(new Tooltip("Clear"));
 
         // back button
         Button backButton = new Button("<-");
@@ -68,12 +69,14 @@ public class OperationsVBox extends CalculatorPart {
         // Button for converting measurements
         Button conversionButton = new Button("Convert");
         conversionButton.setOnAction(actionEvent -> ConversionWindow.displayConversionWindow());
+        conversionButton.setTooltip(new Tooltip("Convert"));
         
         // Button for time calculations
         Button timeButton = new Button("Time");
         timeButton.setOnAction(actionEvent -> TimeWindow.displayTimeWindow());
+        timeButton.setTooltip(new Tooltip("Time"));
         
-        HBox hBox = new ButtonsHBox(List.of(new GenericButton(","), backButton, clearButton,conversionButton,timeButton));
+        HBox hBox = new ButtonsHBox(List.of(new GenericButton("."), backButton, clearButton,conversionButton,timeButton));
         hBox.prefHeightProperty().bind(heightProperty());
         hBox.prefWidthProperty().bind(widthProperty());
         return hBox;
