@@ -67,7 +67,6 @@ public class Power extends Measurement {
         RoundingMode roundingMode = RoundingMode.HALF_UP;
         result = result.setScale(scale, roundingMode);
 
-        System.out.println(value + fromUnit + " = " + result + toUnit);
         return result;
     }
 }

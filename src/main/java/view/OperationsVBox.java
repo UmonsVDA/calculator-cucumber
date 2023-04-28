@@ -71,7 +71,7 @@ public class OperationsVBox extends CalculatorPart {
 
 
         // Button for converting measurements
-        Button conversionButton = new Button("Unit converter");
+        Button conversionButton = new Button("Convert");
         conversionButton.setOnAction(actionEvent -> ConversionWindow.displayConversionWindow());
         
         // Button for time calculations

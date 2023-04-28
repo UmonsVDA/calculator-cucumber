@@ -1,7 +1,6 @@
 package calculator;
 
 import parser.MyParser;
-import visitor.Counter;
 import visitor.Evaluator;
 import visitor.RationalNumberEvaluator;
 import visitor.RealNumberEvaluator;
@@ -12,7 +11,7 @@ import java.math.RoundingMode;
 
 /**
  * This class represents the core logic of a Calculator.
- * It can be used to print and evaluate artihmetic expressions.
+ * It can be used to print and evaluate arithmetic expressions.
  *
  * @author tommens
  */
@@ -112,7 +111,6 @@ public class Calculator {
 
     public void setType(ArithmeticType type) {
         currentType = type;
-        System.out.println(currentType);
     }
 
     /**

@@ -26,7 +26,7 @@ public class MyRealNumber extends MyNumber {
      * @param v The real number to be contained in the object
      */
     public MyRealNumber(double v){
-        value = new BigDecimal(v);
+        value = BigDecimal.valueOf(v);
     }
 
 

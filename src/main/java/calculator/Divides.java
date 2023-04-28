@@ -87,10 +87,15 @@ public final class Divides extends Operation {
      */
     @Override
     public BigDecimal op(BigDecimal l, BigDecimal r)  throws ArithmeticException{
-        try{
+        if (r.compareTo(BigDecimal.ZERO) == 0){
+          throw new ArithmeticException("Division by zero");
+        }
+        else{
+          try{
             return l.divide(r, mathContext);
-        }catch (ArithmeticException exception){
+          }catch (ArithmeticException exception){
             return l.divide(r, MathContext.DECIMAL128);
+          }
         }
     }
     

@@ -73,7 +73,6 @@ public class Length extends Measurement {
         RoundingMode roundingMode = RoundingMode.HALF_UP;
         result = result.setScale(scale, roundingMode);
 
-        System.out.println(value + fromUnit + " = " + result + toUnit);
         return result;
     }
 }

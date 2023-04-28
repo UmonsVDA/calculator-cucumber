@@ -190,7 +190,7 @@ public class TimeWindow {
         // ------------------------------------------- SECOND TAB ------------------------------------------------
         //Unfortunately, you can't add a same object to two different tabs, so I had to duplicate a lot of code
         //First date label and datepicker
-        Label textLabel1Copy = new Label("Enter a first date");
+        Label textLabel1Copy = new Label("Enter a date");
         DatePicker dp1Copy = new DatePicker();
         dp1Copy.getEditor().setDisable(true); //removing text field to avoid errors in date writing
 
@@ -301,7 +301,6 @@ public class TimeWindow {
                         case "days" ->
                                 myTime1.add(new MyRealNumber(value.getRealNumber().multiply(new BigDecimal("86400.0")).toString()));
                     };
-                    System.out.println(result.getDate());
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                     resultLabel.setText(result.getDate().format(formatter));
                 } catch (NullPointerException e) {

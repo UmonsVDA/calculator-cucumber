@@ -48,14 +48,14 @@ public class Displayer implements NotationVisitor {
         Stream<String> s = operation.args.stream().map(Object::toString);
         return switch (notation) {
             case INFIX -> "( " +
-                    s.reduce((s1, s2) -> s1 + " " + operation.getSymbol() + " " + s2).get() +
+                    s.reduce((s1, s2) -> s1 + " " + operation.getSymbol() + " " + s2).orElse(null) +
                     " )";
             case PREFIX -> operation.getSymbol() + " " +
                     "(" +
-                    s.reduce((s1, s2) -> s1 + ", " + s2).get() +
+                    s.reduce((s1, s2) -> s1 + ", " + s2).orElse(null) +
                     ")";
             case POSTFIX -> "(" +
-                    s.reduce((s1, s2) -> s1 + ", " + s2).get() +
+                    s.reduce((s1, s2) -> s1 + ", " + s2).orElse(null) +
                     ")" +
                     " " + operation.getSymbol();
 

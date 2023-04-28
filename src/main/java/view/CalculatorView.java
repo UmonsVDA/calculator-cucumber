@@ -90,12 +90,8 @@ public class CalculatorView extends VBox {
     public void bindHeightAndWidth() {
         calculatorParts.forEach(calculatorPart -> {
             calculatorPart.prefWidthProperty().bind(widthProperty().multiply(calculatorPart.getMaxWidthNbButtons() / totalWidthRequired));
-            System.out.println(calculatorPart.getMaxWidthNbButtons());
             calculatorPart.prefHeightProperty().bind(heightProperty().multiply(calculatorPart.getChildren().size() / totalHeightRequired));
-            System.out.println(calculatorPart.getChildren().size());
         });
-        System.out.println("Total height required: " + totalHeightRequired);
-        System.out.println("Total width required: " + totalWidthRequired);
         ExpressionTextField.getInstance().prefHeightProperty().bind(heightProperty().multiply(1 / totalHeightRequired));
         ResultLabel.getInstance().prefHeightProperty().bind(heightProperty().multiply(1 / totalHeightRequired));
     }

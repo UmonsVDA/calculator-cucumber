@@ -1,8 +1,5 @@
 package calculator;
 
-import visitor.TimeVisitor;
-
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -31,53 +28,4 @@ public class GreatestCommonDivisor extends Operation {
         return Math.toIntExact(Utils.gcd((long) l, (long) r));
     }
 
-    /**
-     * The actual computation of the (binary) GCD of two MyTime objects. This is not allowed.
-     * @param l	 first argument of the binary operation
-     * @param r	second argument of the binary operation
-     * @throws UnsupportedOperationException always thrown since this operation is not allowed
-     */
-    @Override
-    public MyTime op(MyTime l, MyTime r) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * The actual computation of the (binary) GCD of a MyTime and a MyRealNumber objects. This is not allowed.
-     * @param l	 first argument of the binary operation
-     * @param seconds second argument of the binary operation
-     * @throws UnsupportedOperationException always thrown since this operation is not allowed
-     */
-    @Override
-    public MyTime op(MyTime l, MyRealNumber seconds) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * The actual computation of the (binary) GCD of two real numbers
-     * @param l	 first argument of the binary operation
-     * @param r	second argument of the binary operation
-     * @throws UnsupportedOperationException always thrown since this operation is not allowed
-     */
-    @Override
-    public BigDecimal op(BigDecimal l, BigDecimal r) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * The actual computation of the (binary) GCD of two rational numbers
-     * @param l	 first argument of the binary operation
-     * @param r	second argument of the binary operation
-     * @throws UnsupportedOperationException always thrown since this operation is not allowed
-     */
-    @Override
-    public MyRationalNumber op(MyRationalNumber l, MyRationalNumber r) {
-        throw new UnsupportedOperationException();
-    }
-
-
-    @Override
-    public void accept(TimeVisitor v) {
-        throw new UnsupportedOperationException();
-    }
 }
