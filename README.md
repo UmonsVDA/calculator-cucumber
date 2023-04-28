@@ -1,6 +1,4 @@
-Code quality: ![Maven Build](https://github.com/UmonsVDA/calculator-cucumber/actions/workflows/maven.yml/badge.svg)
-
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=UmonsVDA_calculator-cucumber&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=UmonsVDA_calculator-cucumber)
+Code quality: ![Maven Build](https://github.com/UmonsVDA/calculator-cucumber/actions/workflows/maven.yml/badge.svg)[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=UmonsVDA_calculator-cucumber&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=UmonsVDA_calculator-cucumber)
 
 Test coverage: ![Coverage](.github/badges/jacoco.svg)
 ![Branches](.github/badges/branches.svg)
