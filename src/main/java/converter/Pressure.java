@@ -4,6 +4,9 @@ import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * Class for pressure conversions
+ */
 public class Pressure extends Measurement {
     //Factors of different pressure conversions to Pascals.
     final private double hPa_TO_Pa = 100; //hectoPascals
@@ -27,18 +30,30 @@ public class Pressure extends Measurement {
         }
     }
 
-    //This method converts a given value to Pascals, so that we can use the factor
-    //to get the final desired value.
+    /**
+     * This method converts a value that is in the desired unit to Pascals.
+     * @param value the value to convert
+     * @return the value in Pascals
+     */
     public double toPascals(double value){
         return value*factor;
     }
 
-    //This method converts a value that is in Pascals to the desired unit.
+    /**
+     * This method converts a value that is in Pascals to the desired unit.
+     * @param value the value to convert
+     * @return the value in the desired unit
+     */
     public double fromPascals(double value){
         return value/factor;
     }
 
-    //The method doing the whole conversion and printing the results.
+    /** This method prints the conversion of a value from one unit to another.
+     * @param value the value to convert
+     * @param fromUnit the unit of the value
+     * @param toUnit the unit to convert to
+     * @return the converted value
+     */
     public static BigDecimal printConversion(double value, String fromUnit, String toUnit) {
         Pressure from = new Pressure(fromUnit);
         Pressure to = new Pressure(toUnit);

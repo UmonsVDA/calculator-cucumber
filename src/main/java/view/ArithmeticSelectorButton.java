@@ -7,6 +7,9 @@ import javafx.scene.control.Tooltip;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * This class represents a button that allows the user to swap between arithmetic types.
+ */
 public class ArithmeticSelectorButton extends Button {
 
     private static final List<ArithmeticType> VALUES = Stream.of(ArithmeticType.values())
@@ -22,6 +25,10 @@ public class ArithmeticSelectorButton extends Button {
         setTooltip(new Tooltip(getText()));
     }
 
+    /**
+     * This method returns the unique instance of the ArithmeticSelectorButton.
+     * @return the instance of the ArithmeticSelectorButton
+     */
     public static ArithmeticSelectorButton getInstance() {
         if (instance == null) {
             instance = new ArithmeticSelectorButton();
@@ -29,6 +36,9 @@ public class ArithmeticSelectorButton extends Button {
         return instance;
     }
 
+    /**
+     * This method swaps the arithmetic type of the calculator.
+     */
     private void swapArithmetic() {
         index = (index + 1) % VALUES.size();
         setText(VALUES.get(index).toString());

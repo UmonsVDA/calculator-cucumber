@@ -17,15 +17,6 @@ import java.math.RoundingMode;
  */
 public class Calculator {
 
-    /*
-     For the moment the calculator only contains a print method and an eval method
-     It would be useful to complete this with a read method, so that we would be able
-     to implement a full REPL cycle (Read-Eval-Print loop) such as in Scheme, Python, R and other languages.
-     To do so would require to implement a method with the following signature, converting an input string
-     into an arithmetic expression:
-     public Expression read(String s)
-    */
-
     /** Number of digit to be encoded for real numbers */
     private int precision;
     /** MathContext for real numbers */
@@ -122,6 +113,11 @@ public class Calculator {
         currentType = type;
     }
 
+    /**
+     * This method return the result of an expression as a string
+     * @param expr the expression to be evaluated
+     * @return the result of the evaluation as a string
+     */
     public String evalExpression(String expr){
         Expression e = read(expr);
         if(currentType != null){

@@ -14,7 +14,7 @@ public class Main {
 
     /**
      * This is the main method of the application.
-     * It provides examples of how to use it to construct and evaluate arithmetic expressions.
+     * It launches the GUI.
      *
      * @param args Command-line parameters are not used in this version
      */
