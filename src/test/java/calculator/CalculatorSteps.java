@@ -71,7 +71,7 @@ public class CalculatorSteps {
 	@Given("^the sum of two numbers (\\d+) and (\\d+)$")
 	// The alternative, and in this case simpler, notation would be:
 	// @Given("the sum of two numbers {int} and {int}")
-	public void givenTheSum(int n1, int n2) {
+	public void givenTheSum(int n1, int n2) throws IllegalOperationException {
 		try {
 			params = new ArrayList<>();
 		    params.add(new MyInteger(n1));

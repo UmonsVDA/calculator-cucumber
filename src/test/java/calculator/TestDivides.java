@@ -34,7 +34,7 @@ class TestDivides {
 
 	@SuppressWarnings("AssertBetweenInconvertibleTypes")
 	@Test
-	void testConstructor2() throws IllegalConstruction {
+	void testConstructor2() throws IllegalConstruction, IllegalOperationException {
 		// A Times expression should not be the same as a Divides expression
 		assertNotSame(op, new Times(new ArrayList<>()));
 	}

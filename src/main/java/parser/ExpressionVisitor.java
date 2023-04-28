@@ -12,13 +12,13 @@ import java.math.MathContext;
 public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
 
     /** Stack in which we store values as we visit the derivation tree*/
-    private Stack stack = new Stack();
+    private final Stack stack = new Stack();
 
     /** The notation of the current operation visited */
     private Notation tempNot;
 
     /** MathContext is use for real numbers */
-    private MathContext mathContext;
+    private final MathContext mathContext;
 
 
     /**
@@ -107,7 +107,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             Plus op = new Plus(stack.popArray(),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalConstruction | IllegalOperationException exception){
             return  null;
         }
     }
@@ -139,7 +139,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             Times op = new Times(stack.popArray(),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalConstruction | IllegalOperationException exception){
             return  null;
         }
     }
@@ -171,7 +171,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             Modulo op = new Modulo(stack.popArray(),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalConstruction | IllegalOperationException exception){
             return  null;
         }
     }
@@ -187,7 +187,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             Power op = new Power(stack.popArray(),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalConstruction | IllegalOperationException exception){
             return  null;
         }
     }
@@ -203,7 +203,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             GreatestCommonDivisor op = new GreatestCommonDivisor(stack.popArray(),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalConstruction | IllegalOperationException exception){
             return  null;
         }
     }
@@ -219,7 +219,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
             LeastCommonMultiple op = new LeastCommonMultiple(stack.popArray(),tempNot);
             setMathContext(op);
             return op;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalConstruction | IllegalOperationException exception){
             return  null;
         }
     }
@@ -320,7 +320,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
                 return op;
             }
             return e;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalConstruction | IllegalOperationException exception){
             return null;
         }
     }
@@ -385,7 +385,7 @@ public class ExpressionVisitor extends ExprBaseVisitor<Expression>{
                 return op;
             }
             return e;
-        }catch (IllegalConstruction exception){
+        }catch (IllegalConstruction | IllegalOperationException exception){
             return null;
         }
     }

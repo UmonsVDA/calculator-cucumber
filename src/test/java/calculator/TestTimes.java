@@ -17,7 +17,7 @@ class TestTimes {
 	private List<Expression> params;
 
 	@BeforeEach
-	void setUp() {
+	void setUp() throws IllegalOperationException {
 		  params = Arrays.asList(new MyInteger(value1),new MyInteger(value2));
 		  try { op = new Times(params); }
 		  catch(IllegalConstruction e) { fail(); }
@@ -30,13 +30,13 @@ class TestTimes {
 	}
 
 	@Test
-	void testConstructor2() throws IllegalConstruction {
+	void testConstructor2() throws IllegalConstruction, IllegalOperationException {
 		// A Plus expression should not be the same as a Times expression
 		assertNotSame(op, new Plus(new ArrayList<>()));
 	}
 
 	@Test
-	void testEquals() throws IllegalConstruction {
+	void testEquals() throws IllegalConstruction, IllegalOperationException {
 		// Two similar expressions, constructed separately (and using different constructors) should not be equal
 		List<Expression> p = Arrays.asList(new MyInteger(value1), new MyInteger(value2));
 		Times e = new Times(p, Notation.INFIX);
@@ -49,7 +49,7 @@ class TestTimes {
 	}
 
 	@Test
-	void testHashCode() throws IllegalConstruction {
+	void testHashCode() throws IllegalConstruction, IllegalOperationException {
 		// Two similar expressions, constructed separately (and using different constructors) should have the same hashcode
 		List<Expression> p = Arrays.asList(new MyInteger(value1), new MyInteger(value2));
 		Times e = new Times(p, Notation.INFIX);
