@@ -52,7 +52,7 @@ public class RealNumberEvaluator extends Visitor {
             a.accept(this);
             evaluatedArgs.add(computedValue);
         }
-        //second loop to accumulate all the evaluated subresults
+        //second loop to accumulate all the evaluated sub-results
         BigDecimal temp = evaluatedArgs.get(0);
         for (int i = 1; i < evaluatedArgs.size(); i++) {
             temp = o.op(temp, evaluatedArgs.get(i));
