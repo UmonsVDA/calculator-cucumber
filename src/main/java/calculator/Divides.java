@@ -1,6 +1,9 @@
 package calculator;
 
+import visitor.TimeVisitor;
+
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.List;
 
 /**
@@ -15,44 +18,52 @@ import java.util.List;
  */
 public final class Divides extends Operation {
 
-    /**
-     * Class constructor specifying a number of Expressions to divide.
-     *
-     * @param elist The list of Expressions to divide
-     * @throws IllegalOperationException If an empty list of expressions if passed as parameter
-     * @see #Divides(List< Expression >, Notation )
-     */
-    public /*constructor*/ Divides(List<Expression> elist) throws IllegalOperationException {
-        this(elist, null);
-    }
+  /**
+   * Class constructor specifying a number of Expressions to divide.
+   *
+   * @param elist The list of Expressions to divide
+   * @throws IllegalConstruction If an empty list of expressions if passed as parameter
+   * @see #Divides(List<Expression>,Notation)
+   */
+  public /*constructor*/ Divides(List<Expression> elist) throws IllegalConstruction {
+    this(elist, null);
+  }
 
-    /**
-     * Class constructor specifying a number of Expressions to divide,
-     * as well as the notation used to represent the operation.
-     *
-     * @param elist The list of Expressions to divide
-     * @param n     The Notation to be used to represent the operation
-     * @throws IllegalOperationException If an empty list of expressions if passed as parameter
-     * @see #Divides(List<Expression>)
-     * @see Operation#Operation(List<Expression>,Notation)
-     */
-    public Divides(List<Expression> elist, Notation n) throws IllegalOperationException {
-        super(elist, n);
-        symbol = "/";
-        neutral = 1;
-    }
+  /**
+   * Class constructor specifying a number of Expressions to divide,
+   * as well as the notation used to represent the operation.
+   *
+   * @param elist The list of Expressions to divide
+   * @param n     The Notation to be used to represent the operation
+   * @throws IllegalConstruction If an empty list of expressions if passed as parameter
+   * @see #Divides(List<Expression>)
+   * @see Operation#Operation(List<Expression>,Notation)
+   */
+  public Divides(List<Expression> elist, Notation n) throws IllegalConstruction {
+    super(elist, n);
+    symbol = "/";
+    neutral = 1;
+  }
 
     /**
      * The actual computation of the (binary) arithmetic division of two integers
-     *
      * @param l The first integer
      * @param r The second integer that should divide the first
      * @return The integer that is the result of the division
      */
-    public int op(int l, int r) throws IllegalOperationException {
-        if (r == 0) throw new IllegalOperationException();
-        return (l / r);
-    }
+  public int op(int l, int r) throws ArithmeticException
+    { if(r==0) throw new ArithmeticException("Division by zero");
+      return (l/r); }
+
+  @Override
+  public MyTime op(MyTime l, MyTime r) {
+    throw new RuntimeException("Sorry, you can't divide two dates.");
+  }
+
+  @Override
+  public MyTime op(MyTime l, MyRealNumber seconds) {
+    throw new RuntimeException("Sorry, you can't divide a date and a number");
+  }
 
 
     /**
@@ -63,21 +74,32 @@ public final class Divides extends Operation {
      * @return The real number that is the result of the division
      */
     @Override
-    public BigDecimal op(BigDecimal l, BigDecimal r) throws IllegalOperationException {
-        if (BigDecimal.ZERO.compareTo(r) == 0) throw new IllegalOperationException();
-        return l.divide(r, mathContext);
+    public BigDecimal op(BigDecimal l, BigDecimal r)  throws ArithmeticException{
+        if (r.compareTo(BigDecimal.ZERO) == 0){
+          throw new ArithmeticException("Division by zero");
+        }
+        else{
+          try{
+            return l.divide(r, mathContext);
+          }catch (ArithmeticException exception){
+            return l.divide(r, MathContext.DECIMAL128);
+          }
+        }
     }
-
+    
     /**
      * The actual computation of the (binary) arithmetic division of two rational numbers
-     *
      * @param l The first rational number
      * @param r The second rational number that should divide the first
      * @return The rational number that is the result of the division
      */
     @Override
-    public MyRationalNumber op(MyRationalNumber l, MyRationalNumber r) throws IllegalOperationException {
-        if (r.isZero()) throw new IllegalOperationException();
+    public MyRationalNumber op(MyRationalNumber l, MyRationalNumber r) throws ArithmeticException{
         return l.divide(r);
+
     }
+
+  @Override
+  public void accept(TimeVisitor v) {}
+
 }
