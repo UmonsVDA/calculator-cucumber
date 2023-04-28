@@ -93,6 +93,13 @@ class TestMyRationalNumber {
 		assertEquals(new BigDecimal("1.4"), MyRationalNumber.create(7,5).getRealNumber());
 	}
 
+	@Test
+	void testHashcode(){
+		assertTrue(number.hashCode() == MyRationalNumber.create(nominator, denominator).hashCode());
+		assertFalse(number.hashCode() == MyRationalNumber.create(10, denominator).hashCode());
+
+	}
+
 
 
 

@@ -131,4 +131,77 @@ public class TestCalculator {
         assertEquals(MathContext.UNLIMITED.getPrecision(),calculator.getMathContext().getPrecision());
     }
 
+    @Test
+    void testIntegerDivisionByZero(){
+        calculator.setType(ArithmeticType.INTEGER);
+        assertEquals("NaN", calculator.evalExpression("1/0"));
+    }
+
+    @Test
+    void testRationalDivisionByZero(){
+        calculator.setType(ArithmeticType.RATIONAL);
+        assertEquals("NaN", calculator.evalExpression("1/0"));
+    }
+
+    @Test
+    void testRealDivisionByZero(){
+        calculator.setType(ArithmeticType.REAL);
+        assertEquals("NaN", calculator.evalExpression("1/0"));
+    }
+
+    @Test
+    void testNoTypeDivisionByZero(){
+        assertEquals("Error", calculator.evalExpression("1/0"));
+    }
+
+    @Test
+    void testRationalGCD(){
+        calculator.setType(ArithmeticType.RATIONAL);
+        assertEquals("Unsupported operation", calculator.evalExpression("gcd(1_2,1_3)"));
+    }
+
+    @Test
+    void testRealGCD(){
+        calculator.setType(ArithmeticType.REAL);
+        assertEquals("Unsupported operation", calculator.evalExpression("gcd(1,3)"));
+    }
+
+    @Test
+    void testRationalLCM(){
+        calculator.setType(ArithmeticType.RATIONAL);
+        assertEquals("Unsupported operation", calculator.evalExpression("lcm(1_2,1_3)"));
+    }
+
+    @Test
+    void testRealLCM(){
+        calculator.setType(ArithmeticType.REAL);
+        assertEquals("Unsupported operation", calculator.evalExpression("lcm(1,3)"));
+    }
+
+    @Test
+    void testRationalPower(){
+        calculator.setType(ArithmeticType.RATIONAL);
+        assertEquals("Unsupported operation", calculator.evalExpression("^(1_2,1_3)"));
+    }
+
+    @Test
+    void testRealPower(){
+        calculator.setType(ArithmeticType.REAL);
+        assertEquals("Unsupported operation", calculator.evalExpression("^(1,3)"));
+    }
+
+    @Test
+    void testRationalModulo(){
+        calculator.setType(ArithmeticType.RATIONAL);
+        assertEquals("Unsupported operation", calculator.evalExpression("%(1_2,1_3)"));
+    }
+
+    @Test
+    void testRealModulo(){
+        calculator.setType(ArithmeticType.REAL);
+        assertEquals("Unsupported operation", calculator.evalExpression("%(1,3)"));
+    }
+
+
+
 }

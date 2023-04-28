@@ -139,7 +139,7 @@ public abstract class Operation implements Expression
 	 *
 	 * @param v	The visitor object
 	 */
-	public void accept(Visitor v) {
+	public void accept(Visitor v) throws UnsupportedOperationException{
 		for(Expression a:args) { a.accept(v); }
 		v.visit(this);
 	}
