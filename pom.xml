@@ -140,6 +140,7 @@
                 </executions>
                 <configuration>
                     <excludes>
+                        <exclude>view/*.class</exclude>
                         <exclude>calculator/Main.class</exclude>
                     </excludes>
                 </configuration>
