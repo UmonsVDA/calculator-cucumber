@@ -79,21 +79,6 @@ public class MyTime implements Expression {
     @Override
     public void accept(Visitor v) {}
 
-    public void subtract(MyTime mt){
-        long durationHours,durationMinutes,durationSeconds;
-        Duration duration = Duration.between(mt.date, this.date);
-        durationHours=duration.toHours() % 24;
-        durationMinutes = duration.toMinutes() % 60;
-        durationSeconds = duration.toSeconds() % 60;
-
-        System.out.println("Duration from " + date + " to " + mt.date + " : ");
-        System.out.println(duration.toDays()+" days, "+ durationHours +" hours, "+
-                durationMinutes +" minutes and "+ durationSeconds +" seconds;");
-        System.out.println("Or " + duration.getSeconds() + " seconds;");
-        System.out.println("Or " + duration.toMinutes() + " minutes;");
-        System.out.println("Or " + duration.toHours() + " hours;");
-    }
-
     //subtraction for the GUI
     public long[] subtractGUI(MyTime mt){
         long[] durations = new long[7];
