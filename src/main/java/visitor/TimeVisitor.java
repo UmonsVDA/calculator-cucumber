@@ -3,7 +3,7 @@ package visitor;
 import calculator.MyTime;
 import calculator.Operation;
 
-public abstract class TimeVisitor {
+public abstract class TimeVisitor implements TimeVisitorInterface {
     /**
      * The Visitor can traverse a number (a subtype of Expression)
      *
