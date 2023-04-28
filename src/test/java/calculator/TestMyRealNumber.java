@@ -6,6 +6,8 @@ import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class TestMyRealNumber {
@@ -79,6 +81,17 @@ public class TestMyRealNumber {
         calculator.setPrecision(MathContext.UNLIMITED.getPrecision());
         BigDecimal res = calculator.evalReal(calculator.read("1/3"));
         assertEquals(MathContext.DECIMAL128.getPrecision(), res.precision());
+    }
+
+    @Test
+    void testDivideByZero(){
+        MyRealNumber zero = new MyRealNumber(0);
+        try{
+            Divides divides = new Divides(new ArrayList<>(Arrays.asList(number,zero)));
+            assertThrows(ArithmeticException.class, () -> divides.op(number.getRealNumber(),zero.getRealNumber()));
+        }catch (IllegalConstruction e){
+            fail();
+        }
     }
 
 
