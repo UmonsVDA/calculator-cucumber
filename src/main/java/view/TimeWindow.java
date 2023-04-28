@@ -51,7 +51,7 @@ public class TimeWindow {
         dp2.getEditor().setDisable(true); //removing text field to avoid errors in date writing
 
         //Time label and textfield
-        Label optionalText2Label = new Label("Optional : enter a time, accepted formats are HH:(MM):(SS) (AM/PM))");
+        Label optionalText2Label = new Label("Optional : enter a time, accepted formats are HH(:MM:(SS)) (AM/PM))");
         TextField optionalText2 = new TextField();
         optionalText2.setPromptText("HH(:MM:(SS)) (AM/PM)");
 
@@ -195,7 +195,7 @@ public class TimeWindow {
         dp1Copy.getEditor().setDisable(true); //removing text field to avoid errors in date writing
 
         //Time label and textfield
-        Label optionalText1LabelCopy = new Label("Optional : enter a time, accepted formats are HH:(MM):(SS) (AM/PM))");
+        Label optionalText1LabelCopy = new Label("Optional : enter a time, accepted formats are HH(:MM:(SS)) (AM/PM))");
         TextField optionalText1Copy = new TextField();
         optionalText1Copy.setPromptText("HH(:MM:(SS)) (AM/PM)");
 

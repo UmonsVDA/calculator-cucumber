@@ -78,31 +78,6 @@ public final class Minus extends Operation {
         return l.subtract(r);
     }
 
-    /**
-     * The actual computation of the (binary) arithmetic subtraction of two times
-     * @param l	 The first time
-     * @param r  The second time that should be subtracted from the first
-     * @return The time resulting from the subtraction
-     */
-    @Override
-    public MyTime op(MyTime l, MyTime r) {
-        l.subtract(r);
-        return l;
-    }
-
-    /**
-     * The actual computation of the (binary) arithmetic subtraction of a time and a number of seconds
-     * @param l	 The time
-     * @param seconds  The number of seconds that should be subtracted from the time
-     * @return The time resulting from the subtraction
-     */
-    @Override
-    public MyTime op(MyTime l, MyRealNumber seconds) {
-        MyRealNumber negativeNumber = new MyRealNumber("-"+seconds.toString());
-        return l.add(negativeNumber);
-    }
-
-
     @Override
     public void accept(TimeVisitor v) {
         v.visit(this);
