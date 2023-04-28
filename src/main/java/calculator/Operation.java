@@ -90,14 +90,18 @@ public abstract class Operation implements Expression
 	 */
 	public abstract int op(int l, int r);
 	// the operation itself is specified in the subclasses
-	public abstract MyTime op(MyTime l, MyTime r);
+	public MyTime op(MyTime l, MyTime r){
+		throw new UnsupportedOperationException();
+	}
 	/**
 	 * Abstract method representing the actual binary arithmetic operation to time-compute
 	 * @param l	 first argument of the binary operation
 	 * @param seconds	second argument of the binary operation
 	 * @return	result of computing the binary operation
 	 */
-	public abstract MyTime op(MyTime l, MyRealNumber seconds);
+	public MyTime op(MyTime l, MyRealNumber seconds){
+		throw new UnsupportedOperationException();
+	}
 
 	/**
 	 * Abstract method representing the actual binary arithmetic operation to compute between two real number
@@ -105,7 +109,9 @@ public abstract class Operation implements Expression
 	 * @param r second argument of the binary operation
 	 * @return result of computing the binary operation
 	 */
-	public abstract BigDecimal op(BigDecimal l, BigDecimal r);
+	public BigDecimal op(BigDecimal l, BigDecimal r){
+		throw new UnsupportedOperationException();
+	}
 
 	/**
 	 * Abstract method representing the actual binary arithmetic operation to compute between two rational numbers
@@ -113,7 +119,9 @@ public abstract class Operation implements Expression
 	 * @param r	second rational number of the binary operation
 	 * @return	result of computing the binary operation
 	 */
-	public abstract MyRationalNumber op(MyRationalNumber l, MyRationalNumber r);
+	public MyRationalNumber op(MyRationalNumber l, MyRationalNumber r){
+		throw new UnsupportedOperationException();
+	}
 
 
 	/** Add more parameters to the existing list of parameters
@@ -204,5 +212,7 @@ public abstract class Operation implements Expression
 		return symbol;
 	}
 
-  public abstract void accept(TimeVisitor v);
+  public void accept(TimeVisitor v){
+	  throw new UnsupportedOperationException();
+  }
 }
