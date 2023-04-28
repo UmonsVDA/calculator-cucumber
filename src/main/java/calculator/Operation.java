@@ -1,7 +1,6 @@
 package calculator;
 
 import visitor.Displayer;
-import visitor.TimeVisitor;
 import visitor.Visitor;
 
 import java.math.BigDecimal;
@@ -196,10 +195,6 @@ public abstract class Operation implements Expression
 	public String getSymbol() {
 		return symbol;
 	}
-
-  public void accept(TimeVisitor v){
-	  throw new UnsupportedOperationException();
-  }
 
 	public Notation getNotation() {
 		return notation;

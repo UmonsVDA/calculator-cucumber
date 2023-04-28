@@ -1,7 +1,5 @@
 package calculator;
 
-import visitor.TimeVisitor;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -75,6 +73,4 @@ public final class Times extends Operation
   return l.multiply(r);
  }
 
- @Override
- public void accept(TimeVisitor v) {}
 }

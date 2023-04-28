@@ -1,6 +1,5 @@
 package calculator;
 
-import visitor.TimeVisitor;
 import visitor.Visitor;
 
 import java.text.SimpleDateFormat;
@@ -79,10 +78,6 @@ public class MyTime implements Expression {
      */
     @Override
     public void accept(Visitor v) {}
-    @Override
-    public void accept(TimeVisitor v) {
-        v.visit(this);
-    }
 
     public void subtract(MyTime mt){
         long durationHours,durationMinutes,durationSeconds;
