@@ -18,7 +18,7 @@ class TestMyNumber {
 	}
 
 	@Test
-	void testEquals() {
+	void testEquals() throws IllegalConstruction {
 		// Two distinct MyNumber, constructed separately (using a different constructor) but containing the same value should be equal
 		assertEquals(new MyInteger(value), number);
 		// Two MyNumbers containing a distinct value should not be equal:
@@ -26,10 +26,7 @@ class TestMyNumber {
 		assertNotEquals(new MyInteger(otherValue),number);
 		assertEquals(number, number); // Identity check (for coverage, as this should always be true)
 		assertNotEquals(number, value); // number is of type MyNumber, while value is of type int, so not equal
-		try {
-			assertNotEquals(new Times(new ArrayList<>()), number);
-		}
-		catch (IllegalOperationException e) {fail();}
+		assertNotEquals(new Times(new ArrayList<>()), number);
 	}
 
 	@Test

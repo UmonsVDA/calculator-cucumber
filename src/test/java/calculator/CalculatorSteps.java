@@ -47,7 +47,7 @@ public class CalculatorSteps {
 				case "^"	->	op = new Power(params);
 				default		->	fail();
 			}
-		} catch (IllegalConstruction e) {
+		} catch (IllegalConstruction | IllegalOperationException e) {
 			fail();
 		}
 	}
@@ -131,7 +131,7 @@ public class CalculatorSteps {
 				default -> fail();
 			}
 			assertEquals(val, c.eval(op));
-		} catch (IllegalConstruction e) {
+		} catch (IllegalConstruction | IllegalOperationException e) {
 			fail();
 		}
 	}

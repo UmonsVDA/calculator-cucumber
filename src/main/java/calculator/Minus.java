@@ -25,7 +25,7 @@ public final class Minus extends Operation {
      * @throws IllegalOperationException If an empty list of expressions if passed as parameter
      * @see #Minus(List< Expression >, Notation )
      */
-    public /*constructor*/ Minus(List<Expression> elist) throws IllegalOperationException {
+    public /*constructor*/ Minus(List<Expression> elist) throws IllegalOperationException, IllegalConstruction {
         this(elist, null);
     }
 
@@ -39,7 +39,7 @@ public final class Minus extends Operation {
      * @see #Minus(List<Expression>)
      * @see Operation#Operation(List<Expression>,Notation)
      */
-    public Minus(List<Expression> elist, Notation n) throws IllegalOperationException {
+    public Minus(List<Expression> elist, Notation n) throws IllegalOperationException, IllegalConstruction {
         super(elist, n);
         symbol = "-";
         neutral = 0;

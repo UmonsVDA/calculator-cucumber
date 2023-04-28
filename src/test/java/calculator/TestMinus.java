@@ -17,7 +17,7 @@ class TestMinus {
 	private List<Expression> params;
 
 	@BeforeEach
-	void setUp() {
+	void setUp() throws IllegalConstruction {
 		  params = Arrays.asList(new MyInteger(value1),new MyInteger(value2));
 		  try { op = new Minus(params); }
 		  catch(IllegalOperationException e) { fail(); }
@@ -31,17 +31,13 @@ class TestMinus {
 
 	@SuppressWarnings("AssertBetweenInconvertibleTypes")
 	@Test
-	void testConstructor2() {
+	void testConstructor2() throws IllegalConstruction {
 		// A Times expression should not be the same as a Minus expression
-		try {
-			assertNotSame(op, new Times(new ArrayList<>()));
-		} catch (IllegalOperationException e) {
-			fail();
-		}
+		assertNotSame(op, new Times(new ArrayList<>()));
 	}
 
 	@Test
-	void testEquals() {
+	void testEquals() throws IllegalConstruction {
 		// Two similar expressions, constructed separately (and using different constructors) should not be equal
 		List<Expression> p = Arrays.asList(new MyInteger(value1), new MyInteger(value2));
 		try {
@@ -58,7 +54,7 @@ class TestMinus {
 	}
 
 	@Test
-	void testHashCode() {
+	void testHashCode() throws IllegalConstruction {
 		// Two similar expressions, constructed separately (and using different constructors) should have the same hashcode
 		List<Expression> p = Arrays.asList(new MyInteger(value1), new MyInteger(value2));
 		try {

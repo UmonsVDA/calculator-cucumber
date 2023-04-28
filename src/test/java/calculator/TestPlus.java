@@ -17,10 +17,9 @@ class TestPlus {
 	private List<Expression> params;
 
 	@BeforeEach
-	void setUp() {
+	void setUp() throws IllegalConstruction {
 		  params = new ArrayList<>(Arrays.asList(new MyInteger(value1),new MyInteger(value2)));
-		  try { op = new Plus(params); }
-		  catch(IllegalOperationException e) { fail(); }
+		op = new Plus(params);
 	}
 
 	@Test
@@ -31,43 +30,33 @@ class TestPlus {
 
 	@SuppressWarnings("AssertBetweenInconvertibleTypes")
 	@Test
-	void testConstructor2() {
+	void testConstructor2() throws IllegalConstruction {
 		// A Times expression should not be the same as a Plus expression
-		try {
-			assertNotSame(op, new Times(new ArrayList<>()));
-		} catch (IllegalOperationException e) {
-			fail();
-		}
+		assertNotSame(op, new Times(new ArrayList<>()));
 	}
 
 	@Test
-	void testEquals() {
+	void testEquals() throws IllegalConstruction {
 		// Two similar expressions, constructed separately (and using different constructors) should be equal
 		ArrayList<Expression> p = new ArrayList<>(Arrays.asList(new MyInteger(value1), new MyInteger(value2)));
-		try {
-			Plus e = new Plus(p, Notation.INFIX);
-			assertEquals(op, e);
-			assertEquals(e, e);
-			assertNotEquals(e, new Plus(new ArrayList<>(Arrays.asList(new MyInteger(5), new MyInteger(4))), Notation.INFIX));
-		}
-		catch(IllegalOperationException e) { fail(); }
+		Plus e = new Plus(p, Notation.INFIX);
+		assertEquals(op, e);
+		assertEquals(e, e);
+		assertNotEquals(e, new Plus(new ArrayList<>(Arrays.asList(new MyInteger(5), new MyInteger(4))), Notation.INFIX));
 	}
 
 	@SuppressWarnings("ConstantConditions")
 	@Test
 	void testNull() {
-			assertDoesNotThrow(() -> op==null); // Direct way to to test if the null case is handled.
+			assertDoesNotThrow(() -> op==null); // Direct way to test if the null case is handled.
 	}
 
 	@Test
-	void testHashCode() {
+	void testHashCode() throws IllegalConstruction {
 		// Two similar expressions, constructed separately (and using different constructors) should have the same hashcode
 		ArrayList<Expression> p = new ArrayList<>(Arrays.asList(new MyInteger(value1), new MyInteger(value2)));
-		try {
-			Plus e = new Plus(p, Notation.INFIX);
-			assertEquals(e.hashCode(), op.hashCode());
-		}
-		catch(IllegalOperationException e) { fail(); }
+		Plus e = new Plus(p, Notation.INFIX);
+		assertEquals(e.hashCode(), op.hashCode());
 	}
 
 	@Test

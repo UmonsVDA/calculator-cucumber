@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,62 +31,43 @@ class TestRationalNumberEvaluator {
 
     @Test
     void testEvaluatorRationalNumber() {
-        TestUtils.checkOptionalContent( MyRationalNumber.create(nominator1, denominator1), calc.evalRational(MyRationalNumber.create(nominator1, denominator1)));
+        assertEquals( MyRationalNumber.create(nominator1, denominator1), calc.evalRational(MyRationalNumber.create(nominator1, denominator1)));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"*", "+", "/", "-"})
-    void testEvaluateRationalOperations(String symbol) {
+    void testEvaluateRationalOperations(String symbol) throws IllegalOperationException {
         List<Expression> params = Arrays.asList(MyRationalNumber.create(nominator1, denominator1),MyRationalNumber.create(nominator2, denominator2));
         try {
             //construct another type of operation depending on the input value
             //of the parameterised test
             switch (symbol) {
-                case "+"	->	TestUtils.checkOptionalContent( MyRationalNumber.create(5,6), calc.evalRational(new Plus(params)));
-                case "-"	->	TestUtils.checkOptionalContent( MyRationalNumber.create(-1, 6), calc.evalRational(new Minus(params)));
-                case "*"	->	TestUtils.checkOptionalContent( MyRationalNumber.create(1, 6), calc.evalRational(new Times(params)));
-                case "/"	->	TestUtils.checkOptionalContent( MyRationalNumber.create(2, 3), calc.evalRational(new Divides(params)));
+                case "+"	->	assertEquals( MyRationalNumber.create(5,6), calc.evalRational(new Plus(params)));
+                case "-"	->	assertEquals( MyRationalNumber.create(-1, 6), calc.evalRational(new Minus(params)));
+                case "*"	->	assertEquals( MyRationalNumber.create(1, 6), calc.evalRational(new Times(params)));
+                case "/"	->	assertEquals( MyRationalNumber.create(2, 3), calc.evalRational(new Divides(params)));
                 default		->	fail();
             }
-        } catch (IllegalOperationException e) {
+        } catch (IllegalConstruction e) {
             fail();
         }
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"*", "+", "/", "-"})
-    void testEvaluateMixedOperations(String symbol) {
+    void testEvaluateMixedOperations(String symbol) throws IllegalOperationException {
         List<Expression> params = Arrays.asList(MyRationalNumber.create(nominator1, denominator1),MyRationalNumber.create(nominator2, denominator2), new MyInteger(value1));
         try {
             //construct another type of operation depending on the input value
             //of the parameterised test
             switch (symbol) {
-                case "+"	->	TestUtils.checkOptionalContent( MyRationalNumber.create(53,6), calc.evalRational(new Plus(params)));
-                case "-"	->	TestUtils.checkOptionalContent( MyRationalNumber.create(-49, 6), calc.evalRational(new Minus(params)));
-                case "*"	->	TestUtils.checkOptionalContent( MyRationalNumber.create(8, 6), calc.evalRational(new Times(params)));
-                case "/"	->	TestUtils.checkOptionalContent( MyRationalNumber.create(2, 24), calc.evalRational(new Divides(params)));
+                case "+"	->	assertEquals( MyRationalNumber.create(53,6), calc.evalRational(new Plus(params)));
+                case "-"	->	assertEquals( MyRationalNumber.create(-49, 6), calc.evalRational(new Minus(params)));
+                case "*"	->	assertEquals( MyRationalNumber.create(8, 6), calc.evalRational(new Times(params)));
+                case "/"	->	assertEquals( MyRationalNumber.create(2, 24), calc.evalRational(new Divides(params)));
                 default		->	fail();
             }
-        } catch (IllegalOperationException e) {
-            fail();
-        }
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"*", "+", "/", "-"})
-    void testEvaluateRationalOperationsImplyingZero(String symbol) {
-        List<Expression> params = Arrays.asList(MyRationalNumber.create(nominator1, denominator1),MyRationalNumber.create(0, denominator2));
-        try {
-            //construct another type of operation depending on the input value
-            //of the parameterised test
-            switch (symbol) {
-                case "+"	->	TestUtils.checkOptionalContent( MyRationalNumber.create(nominator1,denominator1), calc.evalRational(new Plus(params)));
-                case "-"	->	TestUtils.checkOptionalContent( MyRationalNumber.create(nominator1, denominator1), calc.evalRational(new Minus(params)));
-                case "*"	->	TestUtils.checkOptionalContent( MyRationalNumber.create(0, 1), calc.evalRational(new Times(params)));
-                case "/"	->	assertEquals( Optional.empty(), calc.evalRational(new Divides(params)));
-                default		->	fail();
-            }
-        } catch (IllegalOperationException e) {
+        } catch (IllegalConstruction e) {
             fail();
         }
     }
@@ -95,7 +75,7 @@ class TestRationalNumberEvaluator {
 
     @ParameterizedTest
     @ValueSource(strings = {"*", "+", "/", "-"})
-    void testEvaluateRationalOperationsImplyingZero(String symbol) {
+    void testEvaluateRationalOperationsImplyingZero(String symbol) throws IllegalOperationException {
         List<Expression> params = Arrays.asList(MyRationalNumber.create(nominator1, denominator1),MyRationalNumber.create(0, denominator2));
         try {
             //construct another type of operation depending on the input value

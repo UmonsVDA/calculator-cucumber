@@ -14,8 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class TestRealNumberEvaluator {
 
     private Calculator calc;
-    private final String value1 = "0.0000000314159", value2 = "5.0000000000001";
-    private final String simpleValue1 = "0.5", simpleValue2 = "5.0";
 
 
     private MyRealNumber number, simpleNumber, simpleNumber2;
@@ -23,8 +21,11 @@ class TestRealNumberEvaluator {
 
     @BeforeEach
     void setup(){
+        String value1 = "0.0000000314159";
         number = new MyRealNumber(value1);
+        String simpleValue1 = "0.5";
         simpleNumber = new MyRealNumber(simpleValue1);
+        String simpleValue2 = "5.0";
         simpleNumber2 = new MyRealNumber(simpleValue2);
         calc = new Calculator();
 
@@ -32,7 +33,7 @@ class TestRealNumberEvaluator {
 
     @ParameterizedTest
     @ValueSource(strings = {"*", "+", "/", "-"})
-    void testEvaluateRealOperations(String symbol) {
+    void testEvaluateRealOperations(String symbol) throws IllegalOperationException {
         List<Expression> params = Arrays.asList(simpleNumber, simpleNumber2);
         try {
             //construct another type of operation depending on the input value
@@ -53,7 +54,7 @@ class TestRealNumberEvaluator {
 
     @ParameterizedTest
     @ValueSource(strings = {"*", "+", "/", "-"})
-    void testEvaluateRealOperationsImplyingZero(String symbol) {
+    void testEvaluateRealOperationsImplyingZero(String symbol) throws IllegalOperationException {
         List<Expression> params = Arrays.asList(number, new MyRealNumber("0.0000000000000"));
         try {
             //construct another type of operation depending on the input value

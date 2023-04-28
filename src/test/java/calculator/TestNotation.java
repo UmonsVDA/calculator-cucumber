@@ -49,7 +49,7 @@ class TestNotation {
 				case "/" -> op = new Divides(params);
 				default -> fail();
 			}
-		} catch (IllegalConstruction e) {
+		} catch (IllegalConstruction | IllegalOperationException e) {
 			fail();
 		}
 		testNotations(symbol, value1, value2, op);

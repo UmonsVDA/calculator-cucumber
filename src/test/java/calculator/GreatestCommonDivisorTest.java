@@ -22,7 +22,7 @@ class GreatestCommonDivisorTest {
     void setUp() {
         params = Arrays.asList(new MyInteger(value1),new MyInteger(value2));
         try { op = new GreatestCommonDivisor(params); }
-        catch(IllegalOperationException e) { fail(); }
+        catch(IllegalConstruction e) { fail(); }
     }
 
     @Test
@@ -33,7 +33,7 @@ class GreatestCommonDivisorTest {
             GreatestCommonDivisor e = new GreatestCommonDivisor(p, Notation.INFIX);
             assertEquals(op, e);
         }
-        catch(IllegalOperationException e) { fail(); }
+        catch(IllegalConstruction e) { fail(); }
     }
 
 

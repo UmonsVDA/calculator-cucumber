@@ -30,7 +30,7 @@ public class MyTimeSteps {
     }
 
     @When("I provide a number to subtract {int}")
-    public void whenIProvideANumberToSubtract(int val) throws IllegalConstruction {
+    public void whenIProvideANumberToSubtract(int val) throws IllegalConstruction, IllegalOperationException {
         // Subtract the number from MyTime object
         Collections.addAll(params,new MyRealNumber(String.valueOf(val)));
         e = new Minus(params, Notation.INFIX);
