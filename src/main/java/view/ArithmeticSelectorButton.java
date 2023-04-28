@@ -17,12 +17,16 @@ public class ArithmeticSelectorButton extends Button {
     private static ArithmeticSelectorButton instance;
     private int index;
 
+    private final Tooltip tooltip;
+
     private ArithmeticSelectorButton() {
         super(VALUES.get(0).toString());
         index = 0;
         setOnAction(actionEvent -> swapArithmetic());
         MainApplication.getCalculator().setType(VALUES.get(index));
-        setTooltip(new Tooltip(getText()));
+        tooltip = new Tooltip();
+        tooltip.setText(getText());
+        setTooltip(tooltip);
     }
 
     /**
@@ -42,7 +46,7 @@ public class ArithmeticSelectorButton extends Button {
     private void swapArithmetic() {
         index = (index + 1) % VALUES.size();
         setText(VALUES.get(index).toString());
-        setTooltip(new Tooltip(getText()));
+        tooltip.setText(getText());
         MainApplication.getCalculator().setType(VALUES.get(index));
     }
 }
