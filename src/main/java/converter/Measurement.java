@@ -6,7 +6,7 @@ import java.math.BigDecimal;
  * Abstract class for measurement
  */
 public abstract class Measurement {
-    public static BigDecimal printConversion(double res, String u1, String u2) {
+    public static BigDecimal printConversion(double res, String u1, String u2) throws Exception {
         return null;
     }
 }
