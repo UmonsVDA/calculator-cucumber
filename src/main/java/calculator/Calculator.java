@@ -1,6 +1,7 @@
 package calculator;
 
 import parser.MyParser;
+import visitor.Counter;
 import visitor.Evaluator;
 import visitor.RationalNumberEvaluator;
 import visitor.RealNumberEvaluator;
@@ -8,7 +9,6 @@ import visitor.RealNumberEvaluator;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
-import java.util.Optional;
 
 /**
  * This class represents the core logic of a Calculator.
@@ -27,11 +27,15 @@ public class Calculator {
      public Expression read(String s)
     */
 
+    /** Number of digit to be encoded for real numbers */
     private int precision;
+    /** MathContext for real numbers */
     private MathContext mathContext = MathContext.UNLIMITED;
-
+    /** Rounding method for operation on real numbers */
     private RoundingMode roundingMode = RoundingMode.HALF_UP;
 
+    /** Current type on which expression will be evaluated */
+    private ArithmeticType currentType;
 
     /**
      * Convert an input string into an arithmetic expression
@@ -62,10 +66,12 @@ public class Calculator {
      * @see #print(Expression)
      */
     public void printExpressionDetails(Expression e) {
+        Counter counter = new Counter();
+        e.accept(counter);
         print(e);
-        System.out.print("It contains " + e.countDepth() + " levels of nested expressions, ");
-        System.out.print(e.countOps() + " operations");
-        System.out.println(" and " + e.countNbs() + " numbers.");
+        System.out.print("It contains " + counter.getCountDepth() + " levels of nested expressions, ");
+        System.out.print(counter.getCountOps() + " operations");
+        System.out.println(" and " + counter.getCountNbs() + " numbers.");
         System.out.println();
     }
 
@@ -75,19 +81,13 @@ public class Calculator {
      * @param e the arithmetic Expression to be evaluated
      * @return The result of the evaluation
      */
-    public Optional<Integer> eval(Expression e) {
-        if(e == null) return Optional.empty();
-        try {
-            // create a new visitor to evaluate expressions
-            Evaluator v = new Evaluator();
-            // and ask the expression to accept this visitor to start the evaluation process
-            e.accept(v);
-            // and return the result of the evaluation at the end of the process
-            return Optional.of(v.getResult());
-        } catch (IllegalOperationException illegalConstructionException){
-            return Optional.empty();
-        }
-
+    public int eval(Expression e) throws ArithmeticException{
+        // create a new visitor to evaluate expressions
+        Evaluator v = new Evaluator();
+        // and ask the expression to accept this visitor to start the evaluation process
+        e.accept(v);
+        // and return the result of the evaluation at the end of the process
+        return v.getResult();
     }
 
     /**
@@ -96,15 +96,13 @@ public class Calculator {
      * @param e the arithmetic Expression to be evaluated
      * @return The result of the evaluation
      */
-    public Optional<BigDecimal> evalReal(Expression e) {
-        if(e == null) return Optional.empty();
-        try {
-            RealNumberEvaluator v = new RealNumberEvaluator();
-            e.accept(v);
-            return Optional.of(v.getResult());
-        } catch (IllegalOperationException illegalConstructionException){
-            return Optional.empty();
-        }
+    public BigDecimal evalReal(Expression e) throws ArithmeticException{
+        // create a new visitor to evaluate expressions
+        RealNumberEvaluator v = new RealNumberEvaluator();
+        // and ask the expression to accept this visitor to start the evaluation process
+        e.accept(v);
+        // and return the result of the evaluation at the end of the process
+        return v.getResult();
     }
 
     /**
@@ -113,15 +111,10 @@ public class Calculator {
      * @param e the arithmetic Expression to be evaluated
      * @return The result of the evaluation as a rational number
      */
-    public Optional<MyRationalNumber> evalRational(Expression e) {
-        if(e == null) return Optional.empty();
-        try {
-            RationalNumberEvaluator v = new RationalNumberEvaluator();
-            e.accept(v);
-            return Optional.of(v.getResult());
-        } catch (IllegalOperationException illegalConstructionException){
-            return Optional.empty();
-        }
+    public MyRationalNumber evalRational(Expression e) throws ArithmeticException{
+        RationalNumberEvaluator v = new RationalNumberEvaluator();
+        e.accept(v);
+        return v.getResult();
     }
 
     /**
@@ -141,7 +134,7 @@ public class Calculator {
      * @param p A positive integer representing the precision of the real numbers
      */
     public void setPrecision(int p) {
-        if (p > 0) {
+        if (p >= 0) {
             precision = p;
             mathContext = new MathContext(precision, roundingMode);
         }
@@ -168,6 +161,43 @@ public class Calculator {
         System.out.println("The result of evaluating expression " + e);
         System.out.println("is: " + evalRational(e) + ".");
         System.out.println();
+    }
+
+    public MathContext getMathContext(){
+        return mathContext;
+    }
+
+    public void setType(ArithmeticType type) {
+        currentType = type;
+        System.out.println(currentType);
+    }
+
+    public String evalExpression(String expr){
+        Expression e = read(expr);
+        switch (currentType){
+            case  INTEGER -> {
+                try {
+                    return Integer.toString(eval(e));
+                } catch (ArithmeticException ex) {
+                    return "NaN";
+                }
+            }
+            case  REAL -> {
+                try {
+                    return evalReal(e).toString();
+                } catch (ArithmeticException ex) {
+                    return "NaN";
+                }
+            }
+            case RATIONAL -> {
+                try{
+                    return evalRational(e).toString();
+                } catch (ArithmeticException ex) {
+                    return "NaN";
+                }
+            }
+        }
+        return "Error";
     }
 
     /*
