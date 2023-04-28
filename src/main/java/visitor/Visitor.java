@@ -1,6 +1,5 @@
 package visitor;
 
-import calculator.IllegalOperationException;
 import calculator.MyNumber;
 import calculator.Operation;
 
@@ -14,12 +13,13 @@ public abstract class Visitor {
      *
      * @param n The number being visited
      */
-    public abstract void visit(MyNumber n);
+    public abstract void visit(MyNumber n) throws ArithmeticException;
 
     /**
      * The Visitor can traverse an operation (a subtype of Expression)
      *
      * @param o The operation being visited
      */
-    public abstract void visit(Operation o) throws IllegalOperationException;
+    public abstract void visit(Operation o) throws ArithmeticException;
 }
+

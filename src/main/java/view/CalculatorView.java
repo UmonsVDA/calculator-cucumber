@@ -1,6 +1,10 @@
 package view;
 
 import calculator.ArithmeticType;
+import calculator.Calculator;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -14,7 +18,7 @@ public class CalculatorView extends VBox {
     private static CalculatorView instance;
     private final List<CalculatorPart> calculatorParts;
     private ArithmeticType arithmeticType;
-    private double totalHeightRequired = 1., totalWidthRequired = 0.;
+    private double totalHeightRequired = 2., totalWidthRequired = 0.;
 
     private CalculatorView() {
 
@@ -25,7 +29,8 @@ public class CalculatorView extends VBox {
         addCalculatorPart(LeftVBox.getInstance());
         addCalculatorPart(OperationsVBox.getInstance());
 
-        getChildren().addAll(ExpressionTextField.getInstance(), ResultLabel.getInstance(), buttonsHbox);
+        getChildren().addAll(buildMenuBar(), ExpressionTextField.getInstance(), ResultLabel.getInstance(), buttonsHbox);
+
         bindHeightAndWidth();
     }
 
@@ -63,7 +68,7 @@ public class CalculatorView extends VBox {
      * @param totalHeightRequired The total height required by a part of the calculator.
      */
     public void setTotalHeightRequired(double totalHeightRequired) {
-        this.totalHeightRequired = Math.max(totalHeightRequired + 1, this.totalHeightRequired);
+        this.totalHeightRequired = Math.max(totalHeightRequired + 2, this.totalHeightRequired);
     }
 
     /**
@@ -85,5 +90,15 @@ public class CalculatorView extends VBox {
         });
         ExpressionTextField.getInstance().prefHeightProperty().bind(heightProperty().multiply(1 / totalHeightRequired));
         ResultLabel.getInstance().prefHeightProperty().bind(heightProperty().multiply(1 / totalHeightRequired));
+    }
+
+    private MenuBar buildMenuBar(){
+        MenuBar menuBar = new MenuBar();
+        Menu settingsMenu = new Menu("Settings");
+        MenuItem item = new MenuItem("Real numbers settings");
+        item.setOnAction(e->{new SettingsMenu(MainApplication.getCalculator());});
+        settingsMenu.getItems().add(item);
+        menuBar.getMenus().add(settingsMenu);
+        return menuBar;
     }
 }

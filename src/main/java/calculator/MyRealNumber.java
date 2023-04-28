@@ -21,6 +21,14 @@ public class MyRealNumber extends MyNumber {
         value = new BigDecimal(v);
     }
 
+    /**
+     * Constructor method
+     * @param v The real number to be contained in the object
+     */
+    public MyRealNumber(double v){
+        value = BigDecimal.valueOf(v);
+    }
+
 
     /**
      * Constructor method
@@ -62,7 +70,7 @@ public class MyRealNumber extends MyNumber {
      * @return The value contained in the object as a rational number
      */
     @Override
-    public MyRationalNumber getRational() {
+    public MyRationalNumber getRational() throws ArithmeticException {
         return MyRationalNumber.create(value);
     }
 

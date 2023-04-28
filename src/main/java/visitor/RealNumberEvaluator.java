@@ -1,7 +1,6 @@
 package visitor;
 
 import calculator.Expression;
-import calculator.IllegalOperationException;
 import calculator.MyNumber;
 import calculator.Operation;
 
@@ -46,7 +45,7 @@ public class RealNumberEvaluator extends Visitor {
      * @param o The operation being visited
      */
     @Override
-    public void visit(Operation o) throws IllegalOperationException {
+    public void visit(Operation o) throws ArithmeticException, UnsupportedOperationException{
         ArrayList<BigDecimal> evaluatedArgs = new ArrayList<>();
         //first loop to recursively evaluate each subexpression
         for (Expression a : o.getArgs()) {

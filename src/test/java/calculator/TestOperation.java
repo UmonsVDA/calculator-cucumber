@@ -4,6 +4,8 @@ package calculator;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
+import visitor.Counter;
+import visitor.Visitor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,6 +15,8 @@ class TestOperation {
 	private Operation o;
 	private Operation o2;
 
+	Counter counter;
+
 	@BeforeEach
 	void setUp() throws Exception {
 		List<Expression> params1 = Arrays.asList(new MyInteger(3), new MyInteger(4), new MyInteger(5));
@@ -20,6 +24,9 @@ class TestOperation {
 		List<Expression> params3 = Arrays.asList(new Plus(params1), new Minus(params2), new MyInteger(7));
 		o = new Divides(params3);
 		o2 = new Divides(params3);
+
+		counter = new Counter();
+		o.accept(counter);
 	}
 
 	@Test
@@ -29,17 +36,17 @@ class TestOperation {
 
 	@Test
 	void testCountDepth() {
-		assertEquals(2, o.countDepth());
+		assertEquals(2, counter.getCountDepth());
 	}
 
 	@Test
 	void testCountOps() {
-		assertEquals(3, o.countOps());
+		assertEquals(3, counter.getCountOps());
 	}
 
 	@Test
 	void testCountNbs() {
-		assertEquals(Integer.valueOf(6), o.countNbs());
+		assertEquals(Integer.valueOf(6), counter.getCountNbs());
 	}
 
 }

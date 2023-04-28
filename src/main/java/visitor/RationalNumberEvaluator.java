@@ -1,7 +1,6 @@
 package visitor;
 
 import calculator.Expression;
-import calculator.IllegalOperationException;
 import calculator.MyNumber;
 import calculator.MyRationalNumber;
 import calculator.Operation;
@@ -42,7 +41,7 @@ public class RationalNumberEvaluator extends Visitor {
      *
      * @param o The operation being visited
      */
-    public void visit(Operation o) throws IllegalOperationException {
+    public void visit(Operation o) throws ArithmeticException, UnsupportedOperationException{
         ArrayList<MyRationalNumber> evaluatedArgs = new ArrayList<>();
         //first loop to recursively evaluate each subexpression
         for (Expression a : o.getArgs()) {

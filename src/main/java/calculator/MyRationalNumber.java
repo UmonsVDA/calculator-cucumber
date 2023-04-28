@@ -191,4 +191,8 @@ public class MyRationalNumber extends MyNumber {
         return nominator == 0;
     }
 
+    public boolean isZero(){
+        return nominator == 0;
+    }
+
 }

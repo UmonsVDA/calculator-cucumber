@@ -1,6 +1,5 @@
 package calculator;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class GreatestCommonDivisor extends BinaryOperation {
@@ -19,13 +18,4 @@ public class GreatestCommonDivisor extends BinaryOperation {
         return Math.toIntExact(Utils.gcd((long) l, (long) r));
     }
 
-    @Override
-    public BigDecimal op(BigDecimal l, BigDecimal r) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public MyRationalNumber op(MyRationalNumber l, MyRationalNumber r) {
-        throw new UnsupportedOperationException();
-    }
 }
