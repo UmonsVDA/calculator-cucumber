@@ -214,4 +214,13 @@ public abstract class Operation implements Expression
   public void accept(TimeVisitor v){
 	  throw new UnsupportedOperationException();
   }
+
+	public Notation getNotation() {
+		return notation;
+	}
+
+	public void setNotation(Notation notation) {
+		this.notation = notation;
+	}
+
 }
