@@ -1,12 +1,10 @@
 package view;
 
 
-import calculator.Calculator;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 /**
@@ -36,10 +34,8 @@ public class LeftVBox extends CalculatorPart {
         // Button to evaluate the expression
         Button resultButton = new Button("=");
         resultButton.setOnAction(actionEvent -> {
-            Calculator calculator = new Calculator();
-            Optional<Integer> result = calculator.eval(calculator.read(ExpressionTextField.getInstance().getText()));
-            String text = result.map(Object::toString).orElse("invalid input");
-            ResultLabel.getInstance().setText(text);
+            String x = MainApplication.getCalculator().evalExpression(ExpressionTextField.getInstance().getText());
+            ResultLabel.getInstance().setText(String.valueOf(x));
         });
 
         // 0 button
