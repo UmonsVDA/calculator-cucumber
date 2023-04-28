@@ -65,7 +65,7 @@ jobs:
         -Dsonar.host.url=https://sonarcloud.io
         -Dsonar.organization=umonsvda
         -Dsonar.projectKey=UmonsVDA_calculator-cucumber
-        -Dsonar.branch.name=main
+        -Dsonar.branch.name=master
         -Dsonar.login=$SONAR_TOKEN
 
 
