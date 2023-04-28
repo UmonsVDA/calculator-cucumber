@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class TestMeasurement {
     @Test
-    public void testPrintMeasurementConversion() {
+    public void testPrintMeasurementConversion() throws Exception {
         BigDecimal methodResult = Measurement.printConversion(10, "a", "b");
         assertNull(methodResult);
     }
