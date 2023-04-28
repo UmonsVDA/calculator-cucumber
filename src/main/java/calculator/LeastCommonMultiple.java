@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class LeastCommonMultiple extends BinaryOperation {
-    public LeastCommonMultiple(List<Expression> elist) throws IllegalOperationException {
+    public LeastCommonMultiple(List<Expression> elist) throws UnsupportedOperationException, IllegalConstruction {
         super(elist);
     }
 
-    public LeastCommonMultiple(List<Expression> elist, Notation n) throws IllegalOperationException {
+    public LeastCommonMultiple(List<Expression> elist, Notation n) throws UnsupportedOperationException, IllegalConstruction {
         super(elist, n);
         symbol = "LCM";
     }
