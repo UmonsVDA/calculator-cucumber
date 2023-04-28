@@ -78,13 +78,7 @@ public class ConversionWindow {
                     }
                 }
                 switch (measurementName) {
-                    case "Area" -> {
-                        try {
-                            conversionResult = Area.printConversion(ref.finalVal, fromUnit, toUnit);
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
+                    case "Area" -> conversionResult = Area.printConversion(ref.finalVal, fromUnit, toUnit);
                     case "Currency" -> conversionResult = Currency.printConversion(ref.finalVal, fromUnit, toUnit);
                     case "Energy" -> conversionResult = Energy.printConversion(ref.finalVal, fromUnit, toUnit);
                     case "Length" -> conversionResult = Length.printConversion(ref.finalVal, fromUnit, toUnit);

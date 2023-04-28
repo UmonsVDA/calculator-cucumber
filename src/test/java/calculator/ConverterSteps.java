@@ -42,7 +42,7 @@ public class ConverterSteps {
         assertEquals(expectedDecimal, actualDecimal);
     }
     @Then("the conversion from {string} to {string} evaluates to {double}")
-    public void theConversionEvaluatesTo(String u1, String u2, double result) throws Exception {
+    public void theConversionEvaluatesTo(String u1, String u2, double result){
         switch (measurement) {
             case "Area" :
                 assertBigDecimalEquals(result, Area.printConversion(value,u1,u2).doubleValue());
