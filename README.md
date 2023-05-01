@@ -6,6 +6,12 @@ Test coverage: ![Coverage](.github/badges/jacoco.svg)
 
 # Calculating arithmetic expressions
 
+## Video presentation of added features
+
+The video presenting the features added for each individual member is available here : https://github.com/UmonsVDA/calculator-cucumber/blob/master/Video%20presentation.mp4
+Unfortunately, Arnaud had trouble recording his part and couldn't add it to the video in time.
+
+
 ## About
 
 This repository contains Java 17 code for computing arithmetic expressions. It is deliberately incomplete as it serves to be the basis of all kinds of extensions, such as a more sophisticated Calculator application. The code was written to be used for educational purposes at the University of Mons, Belgium in the context of the software evolution course.
